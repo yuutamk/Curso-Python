@@ -651,6 +651,54 @@ print("El doble de", numero, "es", resultado)
 Aquí, importamos el módulo personalizado "mi_modulo.py" y utilizamos sus funciones en nuestro programa principal.
 
 ¡Fantástico! Ahora conoces los módulos en Python y cómo usarlos para aprovechar funciones y variables adicionales. Los módulos son como tesoros de código que puedes agregar a tu programa para hacerlo más poderoso.
+# Excepciones<a name="excepciones"></a>
+
+Imagina que estás cocinando tu plato favorito y te das cuenta de que te falta un ingrediente importante. Las excepciones en Python son como esos momentos inesperados en la programación donde algo sale mal, y necesitas manejar la situación de manera elegante.
+
+Vamos a descubrir cómo funcionan las excepciones en Python:
+
+#### Uso de `try` y `except`:
+
+```python
+try:
+    # Código que podría generar una excepción
+except TipoDeExcepcion:
+    # Código a ejecutar si se produce una excepción del tipo especificado
+```
+
+- `try`: Este bloque contiene el código que podría generar una excepción.
+- `except`: Si ocurre una excepción del tipo especificado, este bloque se ejecuta para manejarla.
+
+#### Ejemplo 1: Manejando una División por Cero
+
+```python
+try:
+    numerador = 10
+    denominador = 0
+    resultado = numerador / denominador
+except ZeroDivisionError:
+    print("¡Error! No puedes dividir entre cero.")
+else:
+    print("El resultado es:", resultado)
+```
+
+En este caso, utilizamos `try` y `except` para manejar una posible excepción cuando intentamos dividir por cero.
+
+#### Ejemplo 2: Manejando un Valor no Numérico
+
+```python
+try:
+    entrada = input("Ingresa un número: ")
+    numero = float(entrada)
+except ValueError:
+    print("¡Error! Debes ingresar un número válido.")
+else:
+    print("El número ingresado es:", numero)
+```
+
+Aquí, usamos `try` y `except` para manejar la posibilidad de que el usuario ingrese un valor que no sea numérico.
+
+¡Excelente trabajo! Ahora conoces cómo manejar excepciones en Python utilizando `try` y `except`. Esto te permite lidiar con situaciones inesperadas de manera controlada y elegante en tus programas.
 
 Con esto, completamos nuestra primera semana de aprendizaje de Python. ¡Esperamos que estos conceptos te ayuden a dar tus primeros pasos en la programación con Python! En la próxima semana, continuaremos explorando más elementos emocionantes de Python, como listas, diccionarios y más.
 
