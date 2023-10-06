@@ -1,7 +1,9 @@
 # PYTHON<a name="python"></a>
-
+![python logo](/src/img/Python-Logo.png)
 
 ¡Hola a todos los futuros programadores y programadoras! En este emocionante viaje hacia el mundo de la programación, hoy vamos a explorar un lenguaje de programación súper versátil y poderoso llamado Python. Pero antes de sumergirnos en la magia de la codificación, necesitamos entender que es python y preparar nuestro entorno de desarrollo.
+
+
 
 ## ¿Qué es Python?
 
@@ -27,6 +29,8 @@ Una de las razones por las que Python se ha vuelto tan popular es su versatilida
 
 - **Desarrollo de Juegos**: Incluso se usa en la creación de videojuegos populares como Los Sims 4 y Battlefield 2.
 
+![aplicaciones](/src/img/campos-de-aplicacion.jpg)
+
 ### Razones para Aprender Python
 
 Ahora, te preguntarás por qué deberías aprender Python. Bueno, aquí tienes algunas razones:
@@ -39,6 +43,7 @@ Ahora, te preguntarás por qué deberías aprender Python. Bueno, aquí tienes a
 
 - **Portabilidad**: Puedes escribir código Python en una plataforma y ejecutarlo en otra sin problemas.
 
+![razones](/src/img/razones-python.png)
 
 Python es un lenguaje de programación fascinante que se ha convertido en una herramienta esencial en el mundo de la tecnología. Grandes empresas como NASA, Google, Netflix y Spotify confían en Python para impulsar sus servicios y productos.
 
@@ -60,6 +65,8 @@ Imagina que Python es como una pluma antes de comenzar a escribir en el mundo de
 
 El primer paso es obtener el software Python en tu computadora. Para hacerlo, simplemente visita el sitio web oficial de Python en [python.org](https://www.python.org/downloads/). Allí encontrarás la última versión disponible para descargar.
 
+![Descargar python](/src/img/py-download.png)
+
 #### **Paso 2: Instalación en Sistemas Unix (Linux o macOS)**
 
 Si estás utilizando un sistema operativo basado en Unix, como Linux o macOS, es posible que ya tengas una versión de Python preinstalada. Sin embargo, te recomendamos encarecidamente que utilices la última versión disponible desde el sitio web oficial.
@@ -69,6 +76,8 @@ Una vez que hayas descargado el archivo de instalación, ejecútalo siguiendo la
 #### **Paso 3: Instalación en Windows**
 
 Para los usuarios de Windows, también puedes descargar Python desde el sitio web oficial. Durante la instalación, asegúrate de marcar la casilla que dice "Agregar Python X.X a PATH" (donde "X.X" es la versión de Python). Esto es importante porque permite que Python sea fácilmente accesible desde la línea de comandos de Windows.
+
+![Alt text](/src/img/install-check.png)
 
 Una vez que hayas completado estos pasos, habrás instalado Python en tu sistema. Ahora estás listo para aventurarte en el emocionante mundo de la programación.
 
@@ -83,6 +92,8 @@ El siguiente paso es elegir un editor de código o un IDE que te ayude a escribi
 
 - **Jupyter Notebook**: Es una herramienta fantástica para la exploración de datos y el desarrollo interactivo de Python. Viene preinstalado en Anaconda, una distribución de Python que es popular en el ámbito de la ciencia de datos.
 
+![IDE vs Editor](/src/img/Editor_vs_IDE.png)
+
 ### Paso 3: Instalar Bibliotecas y Dependencias
 
 La mayoría de los proyectos de Python requerirán bibliotecas y dependencias adicionales. Puedes utilizar la herramienta `pip` para instalar paquetes de Python. Por ejemplo, para instalar la popular biblioteca NumPy, simplemente ejecuta:
@@ -92,6 +103,8 @@ pip install numpy
 ```
 
 Recuerda que si estás utilizando un entorno virtual, debes activarlo antes de usar `pip` para asegurarte de que las bibliotecas se instalen en el entorno correcto.
+
+![bibliotecas](/src/img/librrerias-python.jpg)
 
 ## Paso 5: ¡Comienza a Programar!<a name="primer-programa"></a>
 
@@ -128,6 +141,8 @@ Ahora vamos a adentrarnos en el emocionante mundo de Python y explorar un concep
 ### ¿Qué son las Variables en Python?
 
 Imagina que una variable es como una caja mágica donde puedes guardar cosas. Cada vez que pones algo en la caja, le das un nombre para recordar lo que contiene. En Python, una variable es como esa caja mágica. Es un lugar donde puedes guardar datos y darles un nombre. ¿Por qué son importantes? Porque permiten que tu programa recuerde información y realice tareas inteligentes.
+
+![variables](/src/img/variables.png)
 
 Por ejemplo, si quieres guardar tu edad en Python, puedes hacerlo así:
 
