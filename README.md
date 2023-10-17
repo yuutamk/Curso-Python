@@ -1026,3 +1026,339 @@ print("Diferencia:", diferencia)
 En este ejemplo, realizamos operaciones de conjuntos como unión, intersección y diferencia.
 
 ¡Excelente trabajo! Ahora conoces los conjuntos en Python y cómo utilizarlos para mantener una colección de elementos únicos. Los conjuntos son como cofres de tesoros que no permiten duplicados.
+
+### Manejo de Archivos<a name="manejo-archivos"></a>
+
+Imagina que tienes un diario donde escribes tus pensamientos y experiencias. En programación, los archivos son como esos diarios; te permiten almacenar y recuperar información de manera persistente. El manejo de archivos es esencial para tareas como leer datos de un archivo, escribir resultados o mantener registros de tu programa.
+
+Vamos a adentrarnos en cómo funciona el manejo de archivos en Python:
+
+#### Apertura de un Archivo:
+
+```python
+archivo = open("mi_archivo.txt", "r")  # Abre el archivo para lectura (read)
+```
+
+- `open`: La función `open` se utiliza para abrir un archivo.
+- `"mi_archivo.txt"`: Es el nombre del archivo que deseamos abrir.
+- `"r"`: Indica que queremos abrir el archivo en modo lectura. Otros modos incluyen "w" para escritura (write) y "a" para agregar contenido (append).
+
+#### Ejemplo 1: Leer Contenido de un Archivo
+
+```python
+with open("mi_archivo.txt", "r") as archivo:
+    contenido = archivo.read()
+    print(contenido)
+```
+
+En este caso, abrimos el archivo en modo lectura y leemos su contenido.
+
+#### Ejemplo 2: Escribir en un Archivo
+
+```python
+with open("mi_archivo.txt", "w") as archivo:
+    archivo.write("Hola, este es un ejemplo de escritura en un archivo.")
+```
+
+Aquí, abrimos el archivo en modo escritura y escribimos una cadena de texto en él.
+
+#### Ejemplo 3: Agregar Contenido a un Archivo
+
+```python
+with open("mi_archivo.txt", "a") as archivo:
+    archivo.write("\nEste texto se agrega a continuación del contenido existente.")
+```
+
+En este ejemplo, abrimos el archivo en modo agregado y agregamos más texto al final.
+
+¡Fantástico! Ahora conoces los conceptos básicos del manejo de archivos en Python. Esto te permitirá trabajar con datos almacenados en archivos y crear registros de tus programas.
+
+Con esto, completamos nuestra segunda semana de aprendizaje de Python. ¡Esperando que estos conceptos te ayuden a ampliar tus habilidades y conocimientos en programación con Python! En la próxima semana, continuaremos explorando temas avanzados, como programación orientada a objetos y bibliotecas externas.
+
+---
+
+¡Saludos, jóvenes programadores de Python! Hoy, nos adentraremos en un emocionante mundo: la Programación Orientada a Objetos (POO) en Python.
+
+### ¿Qué es la Programación Orientada a Objetos?<a name="poo"></a>
+
+La programación orientada a objetos, o POO, es un paradigma de programación que nos permite abordar problemas complejos pensando en ellos como objetos. Un objeto en Python es una colección única de datos (atributos) y comportamiento (métodos).
+
+La Programación Orientada a Objetos es como construir con bloques de LEGO. Imagina que tienes diferentes tipos de bloques (objetos) que puedes usar para construir cualquier cosa. En POO, los objetos son como esos bloques, y cada objeto tiene propiedades (atributos) y acciones (métodos).
+
+## Programación Estructurada Vs. Programación Orientada a Objetos
+
+La programación estructurada es el enfoque más común para principiantes, ya que es una forma sencilla de construir programas pequeños. Se trata de ejecutar un programa Python de forma secuencial. Sin embargo, este enfoque tiene sus desventajas cuando los proyectos crecen y se vuelven más complejos.
+
+Imagina que estás en el emocionante mundo de la programación, listo para crear un programa para una cafetería. Tu misión: hacer que los clientes ingresen su presupuesto y mostrarles qué café pueden comprar. Parece una tarea sencilla, ¿verdad? Sin embargo, la elección de tu enfoque de programación puede hacer que esta tarea sea un paseo por el parque o una aventura laberíntica. Aquí es donde entran en juego dos enfoques diferentes: la programación estructurada y la programación orientada a objetos.
+
+**La Programación Estructurada:**
+
+Este enfoque es como la bicicleta de entrenamiento de los programadores principiantes. Comenzamos de manera sencilla, escribiendo líneas de código una tras otra. Aquí tienes un vistazo a cómo podría verse el código de una cafetería en un mundo estructurado:
+
+```python
+small = 2
+regular = 5
+big = 6
+
+user_budget = input('¿Cuál es tu presupuesto? ')
+
+try:
+    user_budget = int(user_budget)
+except:
+    print('Por favor, introduce un número')
+    exit()
+
+if user_budget > 0:
+    if user_budget >= big:
+        print('Puedes comprar el café grande')
+        if user_budget == big:
+            print('Es exacto')
+        else:
+            print('Tu cambio es', user_budget - big)
+    elif user_budget == regular:
+        print('Puedes comprar el café regular')
+        print('Es exacto')
+    elif user_budget >= small:
+        print('Puedes comprar el café pequeño')
+        if user_budget == small:
+            print('Es exacto')
+        else:
+            print('Tu cambio es', user_budget - small)
+```
+
+¡Funciona! Pero, oh, tiene mucho condicional anidado y lógica repetida. Modificarlo en el futuro podría ser un dolor de cabeza.
+
+**La Programación Orientada a Objetos (POO):**
+
+Ahora, piensa en la POO como tu máquina de café de alta gama. Es elegante, eficiente y personalizable. En lugar de escribir líneas y líneas de código, puedes organizar todo en una "caja" ordenada. Mira cómo funciona:
+
+```python
+class Coffee:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = float(price)
+
+    def check_budget(self, budget):
+        if not isinstance(budget, (int, float)):
+            print('Ingresa un número o decimal')
+            exit()
+        if budget < 0:
+            print('Lo siento, no tienes dinero')
+            exit()
+
+    def get_change(self, budget):
+        return budget - self.price
+
+    def sell(self, budget):
+        self.check_budget(budget)
+        if budget >= self.price:
+            print(f'Puedes comprar el café {self.name}')
+            if budget == self.price:
+                print('Es exacto')
+            else:
+                print(f'Aquí tienes tu cambio: {self.get_change(budget)}$')
+            exit('Gracias por tu compra')
+```
+
+Este código luce diferente, ¿verdad? Hemos creado una "clase" llamada "Coffee" que contiene toda la información y lógica relacionada con el café. La belleza de esto es que podemos crear múltiples tipos de café sin lío.
+
+Entonces, ¿cómo lo usamos? Simple, creamos objetos de café y los vendemos:
+
+```python
+small = Coffee('Pequeño', 2)
+regular = Coffee('Regular', 5)
+big = Coffee('Grande', 6)
+
+try:
+    user_budget = float(input('¿Cuál es tu presupuesto? '))
+except ValueError:
+    exit('Por favor, introduce un número')
+
+for coffee in [big, regular, small]:
+    coffee.sell(user_budget)
+```
+
+Ambos enfoques nos llevan al mismo resultado, pero la POO es como tener un equipo de baristas expertos que trabajan juntos de manera organizada y elegante. Es especialmente útil cuando tu proyecto crece y necesitas más funcionalidades. ¡Así que levanta tu taza de café y da la bienvenida a la programación orientada a objetos en tu vida!
+
+### Todo en Python es un Objeto
+
+Una característica destacada de Python es que todo es un objeto. Desde números, cadenas y listas hasta funciones y clases, todos ellos son objetos. Esto significa que todos los objetos tienen atributos y métodos que puedes utilizar.
+
+Para acceder a los atributos y métodos de un objeto, utilizamos la notación de puntos. Por ejemplo, puedes convertir una cadena en mayúsculas con el método `upper()` o comprobar su tipo con `type()`.
+
+```
+my_string = "Hola, soy una cadena"
+print(my_string.upper())  # Imprime la cadena en mayúsculas
+print(type(my_string))  #
+
+ Imprime el tipo de objeto
+```
+
+Si no quedó claro puedes ver este video explicado con minecraft:
+[![POO](/src/img/poo.JPG)](https://youtu.be/I848HdWjLMo?si=NFPgYRX0TzdrO_TC)
+
+## ¿Qué Son las Clases?<a name="clases"></a>
+
+En términos sencillos, una clase es como un plano o plantilla para crear objetos. Un objeto es una instancia de una clase, y se comporta según las reglas definidas por esa clase. Puedes pensar en las clases como si fueran moldes y los objetos como las piezas de un rompecabezas.
+
+## Creando una Clase en Python
+
+Para definir una clase en Python, utilizamos la palabra clave `class`, seguida del nombre de la clase (generalmente en CamelCase). Aquí tienes un ejemplo simple:
+
+```python
+class Perro:
+    pass
+```
+
+Hasta ahora, nuestra clase de perro está vacía, ¡como si fuera un perro sin características ni trucos! Pero no te preocupes, ¡le daremos vida a este perro en un momento!
+
+## Creando un Objeto (Instancia)<a name="objetos"></a>
+
+Una vez que has definido una clase, puedes crear objetos (instancias) de esa clase. Para hacerlo, simplemente llama a la clase como si fuera una función. Por ejemplo:
+
+```python
+mi_perro = Perro()  # Creamos una instancia de la clase Perro
+```
+
+¡Ahora tienes un perro virtual, mi_perro, que es un objeto de la clase Perro!
+
+## Atributos de Clase
+
+Los atributos son como las características o datos que pertenecen a una clase. Pueden variar de un objeto a otro. Aquí hay un ejemplo de cómo añadir atributos a nuestra clase Perro:
+
+```python
+class Perro:
+    def __init__(self, nombre, raza):
+        self.nombre = nombre
+        self.raza = raza
+```
+
+En el ejemplo anterior, hemos creado un método especial llamado `__init__`, que se llama automáticamente cuando se crea un nuevo objeto. Este método se utiliza para inicializar los atributos del objeto. `self` hace referencia al objeto actual (en este caso, al perro que estamos creando).
+
+Ahora puedes crear un perro con nombre y raza:
+
+```python
+mi_perro = Perro("Fido", "Labrador")
+print(mi_perro.nombre)  # Imprime "Fido"
+print(mi_perro.raza)  # Imprime "Labrador"
+```
+
+## Métodos de Clase
+
+Los métodos son como las habilidades o funciones que un objeto puede realizar. Pueden interactuar con los atributos del objeto y realizar diversas tareas. Aquí tienes un ejemplo de cómo añadir un método a nuestra clase Perro:
+
+```python
+class Perro:
+    def __init__(self, nombre, raza):
+        self.nombre = nombre
+        self.raza = raza
+    
+    def ladrar(self):
+        print(f"{self.nombre} está ladrando: ¡Guau, guau!")
+```
+
+Ahora, tu perro virtual puede ladrar:
+
+```python
+mi_perro = Perro("Fido", "Labrador")
+mi_perro.ladrar()  # Imprime "Fido está ladrando: ¡Guau, guau!"
+```
+
+Las clases en Python son una de las herramientas más versátiles y poderosas que tienes a tu disposición. Puedes crear objetos con atributos y métodos personalizados para representar conceptos y entidades del mundo real en tu código.
+
+
+### Encapsulación<a name="encapsulacion"></a>
+
+La encapsulación se asemeja a un cofre fuerte que protege y oculta los detalles internos de un objeto. Imagina que eres un mago y tienes un libro de hechizos. ¿Permitirías que cualquiera vea tus hechizos más poderosos? Por supuesto que no. De manera similar, la encapsulación se trata de **ocultar los detalles internos** de un objeto y **exponer solo lo que es necesario**.
+
+## Cómo Funciona la Encapsulación en Python
+
+Python hace que la encapsulación sea sencilla mediante el uso de **atributos privados** y **métodos privados**. Esto significa que algunos componentes de una clase no son accesibles desde fuera de la clase.
+
+```python
+class SuperHeroe:
+    def __init__(self, nombre, identidad_secreta):
+        self.nombre = nombre          # Atributo público
+        self.__identidad = identidad_secreta  # Atributo privado
+
+    def revelar_identidad(self):
+        return self.__identidad
+```
+
+En este ejemplo, `nombre` es un atributo público que puede ser accedido desde fuera de la clase. Sin embargo, `__identidad` es un atributo privado que solo puede ser accedido desde dentro de la clase. Esto protege la identidad secreta del superhéroe.
+
+Si no quedó claro puedes ver este video explicado con minecraft:
+[![POO](/src/img/encapsulamiento.JPG)](https://youtu.be/8aQSD36paWU?si=6-ydXxb2cT3B_BsM)
+
+
+## Desentrañando el Misterio de la Herencia
+
+La herencia es un concepto clave en la programación orientada a objetos (POO) y juega un papel vital en la creación de programas sólidos y organizados. En esencia, la herencia te permite **heredar** propiedades y comportamientos de una clase existente y construir una nueva clase sobre esa base.
+
+Pensemos en la herencia de la siguiente manera: Imagina que eres un artista y tienes una paleta de colores con mezclas únicas. Ahora, quieres crear una nueva pintura, ¿comenzarías desde cero o usarías tus colores ya existentes como punto de partida? La herencia te permite aprovechar esas mezclas existentes para crear algo nuevo y emocionante.
+
+## La Magia de la Herencia en Python
+
+En Python, la herencia es sencilla y poderosa. Aquí tienes un ejemplo para ilustrar cómo funciona:
+
+```python
+class CriaturaMagica:
+    def __init__(self, nombre, poder):
+        self.nombre = nombre
+        self.poder = poder
+
+    def lanzar_hechizo(self):
+        print(f"{self.nombre} lanza un hechizo.")
+
+class Dragon(CriaturaMagica):
+    def escupir_fuego(self):
+        print(f"{self.nombre} escupe fuego y causa estragos.")
+```
+
+En este código, hemos definido dos clases. La clase `Dragon` hereda de la clase `CriaturaMagica`. Esto significa que un dragón no solo tiene sus propias características, como la capacidad de escupir fuego, sino que también hereda todas las características de una criatura mágica, como lanzar hechizos.
+
+## La Magia Continúa
+
+Ahora que hemos aprendido sobre la herencia, te preguntarás por qué es tan importante. La herencia es una herramienta mágica que te permite:
+
+1. **Reutilizar código**: No necesitas empezar desde cero; puedes aprovechar las clases existentes.
+2. **Organizar tu código**: Crea una estructura jerárquica que hace que tu programa sea más fácil de entender.
+3. **Extender funcionalidad**: Agrega nuevas características a las clases base sin afectar su funcionamiento original.
+4. **Mantiene tu código limpio y legible**: Al reducir la duplicación y mejorar la organización.
+
+La herencia es una de las piedras angulares de la POO en Python. Te permite construir programas más flexibles y mantenibles. Ahora que has desbloqueado el poder de la herencia, te animo a explorar y experimentar por ti mismo. ¡Crea tus propias clases y observa cómo la herencia facilita la construcción de programas asombrosos!
+
+Si no quedó claro puedes ver este video explicado con minecraft:
+[![POO](/src/img/herencia.JPG)](https://youtu.be/yh8bTKqCOtU?si=O4cIewNxbWpnHMbi)
+
+
+## ¿Qué es el Polimorfismo?
+
+El término "polimorfismo" proviene del griego y significa "muchas formas". En programación, el polimorfismo se refiere a la capacidad de diferentes objetos para responder a la misma llamada de método de manera específica para cada uno. En otras palabras, varios objetos pueden realizar la misma acción, pero de una manera que es relevante para ellos.
+
+## Un Ejemplo Sencillo
+
+Imagina una familia de mascotas con perros, gatos y pájaros. Todos ellos pueden hacer un sonido, pero cada uno lo hace de una manera única:
+
+```python
+class Mascota:
+    def hacer_sonido(self):
+        pass
+
+class Perro(Mascota):
+    def hacer_sonido(self):
+        return "¡Guau!"
+
+class Gato(Mascota):
+    def hacer_sonido(self):
+        return "¡Miau!"
+
+class Pajaro(Mascota):
+    def hacer_sonido(self):
+        return "¡Pío!"
+```
+
+En este ejemplo, hemos creado una jerarquía de clases de mascotas con un método `hacer_sonido`. Cada tipo de mascota (perro, gato, pájaro) implementa este método de manera específica para sí mismo.
+
+Si no quedó claro puedes ver este video explicado con minecraft:
+[![POO](/src/img/polimorfismo.JPG)](https://youtu.be/bblFTvuk4pY?si=KYIQrYpdIC68Ub9e)
