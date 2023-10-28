@@ -1157,7 +1157,7 @@ class Coffee:
                 print('Es exacto')
             else:
                 print(f'Aquí tienes tu cambio: {self.get_change(budget)}$')
-            exit('Gracias por tu compra')
+            exit('Gracias por tu compra')            
 ```
 
 Este código luce diferente, ¿verdad? Hemos creado una "clase" llamada "Coffee" que contiene toda la información y lógica relacionada con el café. La belleza de esto es que podemos crear múltiples tipos de café sin lío.
@@ -1266,6 +1266,85 @@ mi_perro.ladrar()  # Imprime "Fido está ladrando: ¡Guau, guau!"
 
 Las clases en Python son una de las herramientas más versátiles y poderosas que tienes a tu disposición. Puedes crear objetos con atributos y métodos personalizados para representar conceptos y entidades del mundo real en tu código.
 
+### Método constructor
+
+¿Alguna vez has deseado crear objetos con características únicas y bien definidas en Python? El "Método Constructor" es la respuesta a ese deseo. Este método se llama automáticamente cuando creas un nuevo objeto de una clase, y su función es inicializar los atributos de ese objeto. Imagina que estás fabricando robots en tu propia fábrica de Python. Cada robot tendrá su propio nombre, color y nivel de batería, ¡y el método constructor es la clave para lograrlo!
+
+Veamos cómo funciona:
+
+```python
+class Robot:
+    def __init__(self, nombre, color, bateria):
+        self.nombre = nombre
+        self.color = color
+        self.bateria = bateria
+
+# Crear un robot llamado R2-D2
+robot1 = Robot("R2-D2", "Azul y blanco", 100)
+
+# Crear otro robot llamado Wall-E
+robot2 = Robot("Wall-E", "Marrón", 80)
+```
+
+En este ejemplo, hemos definido una clase llamada `Robot`. El método `__init__` toma cuatro parámetros: `self`, `nombre`, `color`, y `bateria`. El parámetro `self` hace referencia al objeto que está siendo creado. Luego, asignamos los valores de `nombre`, `color` y `bateria` a los atributos del robot utilizando `self`.
+
+Ahora que hemos dado vida a nuestros robots, podemos personalizarlos según nuestras necesidades. Puedes acceder a los atributos de un objeto y modificarlos:
+
+```python
+# Acceder a los atributos del robot R2-D2
+print(robot1.nombre)  # Imprime "R2-D2"
+print(robot1.color)   # Imprime "Azul y blanco"
+print(robot1.bateria) # Imprime 100
+
+# Modificar la batería de Wall-E
+robot2.bateria = 90
+print(robot2.bateria) # Imprime 90
+```
+
+El método constructor `__init__` se encargó de crear nuestros robots con sus atributos iniciales, pero luego somos libres de personalizarlos como queramos.
+
+#### **Por Qué el Método Constructor es Importante**
+
+El método constructor es fundamental en la programación orientada a objetos. Permite la creación de objetos con atributos específicos, lo que los hace únicos y listos para realizar tareas particulares. Imagina que cada objeto es un personaje en tu propio mundo de programación, ¡y el método constructor es lo que les da vida y personalidad!
+
+A medida que avances en tu viaje por Python, te darás cuenta de que el método constructor es solo el comienzo. Puedes agregar otros métodos y atributos a tus clases para hacer que tus objetos hagan cosas sorprendentes.
+
+## Descifrando el Misterio de "self"
+
+En el mundo de la programación orientada a objetos, los objetos son como personajes en una obra de teatro, y cada uno tiene su propia identidad y habilidades. El "self" es la forma en que Python le permite a un objeto referirse a sí mismo. Es como si cada actor en una obra de teatro tuviera un espejo mágico que refleja quiénes son y qué pueden hacer.
+
+Para entender mejor, echemos un vistazo a un ejemplo:
+
+```python
+class Robot:
+    def __init__(self, nombre, bateria):
+        self.nombre = nombre
+        self.bateria = bateria
+
+    def saludar(self):
+        return f"Hola, soy {self.nombre}."
+
+# Crear un robot llamado R2-D2
+robot1 = Robot("R2-D2", 100)
+
+# Crear otro robot llamado Wall-E
+robot2 = Robot("Wall-E", 80)
+
+# Hacer que los robots saluden
+saludo_robot1 = robot1.saludar()
+saludo_robot2 = robot2.saludar()
+
+print(saludo_robot1)  # Imprime "Hola, soy R2-D2."
+print(saludo_robot2)  # Imprime "Hola, soy Wall-E."
+```
+
+En este ejemplo, hemos creado una clase llamada `Robot`. Dentro de la clase, el método `__init__` inicializa los atributos del robot. El método `saludar` utiliza "self" para acceder al nombre del robot. El "self" permite que cada robot hable en su propio nombre.
+
+## ¿Por Qué es Importante "self"?
+
+El "self" es fundamental en la programación orientada a objetos. Sin él, los objetos no podrían saber quiénes son ni interactuar con su propio conjunto de datos. Es lo que permite que un objeto acceda a sus atributos y métodos de una manera específica.
+
+Piensa en el "self" como el corazón de un objeto. Es lo que hace que un objeto sea único y le permite actuar de acuerdo con su propia naturaleza. Cada objeto es como un actor en su propia historia, y el "self" es el guion que le dice qué hacer.
 
 ### Encapsulación<a name="encapsulacion"></a>
 
