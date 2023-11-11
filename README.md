@@ -19,6 +19,11 @@
 16. [Tuplas](#tuplas)
 17. [Diccionarios en Python](#diccionario)
 18. [Conjuntos en Python](#conjuntos)
+19. [Manejo de archivos](#manejo-archivos)
+20. [Programación orientada a objetos](#poo)
+21. [Clases](#clases)
+22. [Objetos](#objetos)
+23. [Método constructor](#constructor)
 <!-- 19. [Elementos Multimedia](#multimedia)
 20. [Scripts](#scripts) -->
 <!-- 10. [Elemento 10](#elemento-10) -->
@@ -27,7 +32,7 @@
 </details>
 
 # PYTHON
-![python logo](/src/img/Python-Logo.png)
+![python logo](./src/img/Python-Logo.png)
 
 ¡Hola a todos los futuros programadores y programadoras! En este emocionante viaje hacia el mundo de la programación, hoy vamos a explorar un lenguaje de programación súper versátil y poderoso llamado Python. Pero antes de sumergirnos en la magia de la codificación, necesitamos entender que es python y preparar nuestro entorno de desarrollo.
 
@@ -57,7 +62,7 @@ Una de las razones por las que Python se ha vuelto tan popular es su versatilida
 
 - **Desarrollo de Juegos**: Incluso se usa en la creación de videojuegos populares como Los Sims 4 y Battlefield 2.
 
-![aplicaciones](/src/img/campos-de-aplicacion.jpg)
+![aplicaciones](./src/img/campos-de-aplicacion.jpg)
 
 ### Razones para Aprender Python
 
@@ -71,7 +76,7 @@ Ahora, te preguntarás por qué deberías aprender Python. Bueno, aquí tienes a
 
 - **Portabilidad**: Puedes escribir código Python en una plataforma y ejecutarlo en otra sin problemas.
 
-![razones](/src/img/razones-python.png)
+![razones](./src/img/razones-python.png)
 
 Python es un lenguaje de programación fascinante que se ha convertido en una herramienta esencial en el mundo de la tecnología. Grandes empresas como NASA, Google, Netflix y Spotify confían en Python para impulsar sus servicios y productos.
 
@@ -93,7 +98,7 @@ Imagina que Python es como una pluma antes de comenzar a escribir en el mundo de
 
 El primer paso es obtener el software Python en tu computadora. Para hacerlo, simplemente visita el sitio web oficial de Python en [python.org](https://www.python.org/downloads/). Allí encontrarás la última versión disponible para descargar.
 
-![Descargar python](/src/img/py-download.png)
+![Descargar python](./src/img/py-download.png)
 
 #### **Paso 2: Instalación en Sistemas Unix (Linux o macOS)**
 
@@ -105,7 +110,7 @@ Una vez que hayas descargado el archivo de instalación, ejecútalo siguiendo la
 
 Para los usuarios de Windows, también puedes descargar Python desde el sitio web oficial. Durante la instalación, asegúrate de marcar la casilla que dice "Agregar Python X.X a PATH" (donde "X.X" es la versión de Python). Esto es importante porque permite que Python sea fácilmente accesible desde la línea de comandos de Windows.
 
-![Alt text](/src/img/install-check.png)
+![Alt text](./src/img/install-check.png)
 
 Una vez que hayas completado estos pasos, habrás instalado Python en tu sistema. Ahora estás listo para aventurarte en el emocionante mundo de la programación.
 
@@ -120,7 +125,7 @@ El siguiente paso es elegir un editor de código o un IDE que te ayude a escribi
 
 - **Jupyter Notebook**: Es una herramienta fantástica para la exploración de datos y el desarrollo interactivo de Python. Viene preinstalado en Anaconda, una distribución de Python que es popular en el ámbito de la ciencia de datos.
 
-![IDE vs Editor](/src/img/Editor_vs_IDE.png)
+![IDE vs Editor](./src/img/Editor_vs_IDE.png)
 
 ### Paso 3: Instalar Bibliotecas y Dependencias
 
@@ -132,7 +137,7 @@ pip install numpy
 
 Recuerda que si estás utilizando un entorno virtual, debes activarlo antes de usar `pip` para asegurarte de que las bibliotecas se instalen en el entorno correcto.
 
-![bibliotecas](/src/img/librrerias-python.jpg)
+![bibliotecas](./src/img/librrerias-python.jpg)
 
 ## Paso 5: ¡Comienza a Programar!<a name="primer-programa"></a>
 
@@ -152,7 +157,7 @@ Luego, guarda el archivo con una extensión ".py", por ejemplo, "mi_primer_progr
 
 Abre tu línea de comandos (si usas Windows, es el "Símbolo del sistema" o "CMD"; en Mac o Linux, es la "Terminal"). Navega a la ubicación donde guardaste tu archivo ".py" y escribe:
 
-```
+```zsh
 python mi_primer_programa.py
 ```
 
@@ -170,7 +175,7 @@ Ahora vamos a adentrarnos en el emocionante mundo de Python y explorar un concep
 
 Imagina que una variable es como una caja mágica donde puedes guardar cosas. Cada vez que pones algo en la caja, le das un nombre para recordar lo que contiene. En Python, una variable es como esa caja mágica. Es un lugar donde puedes guardar datos y darles un nombre. ¿Por qué son importantes? Porque permiten que tu programa recuerde información y realice tareas inteligentes.
 
-![variables](/src/img/variables.png)
+![variables](./src/img/variables.png)
 
 Por ejemplo, si quieres guardar tu edad en Python, puedes hacerlo así:
 
@@ -1195,7 +1200,7 @@ print(type(my_string))  #
 ```
 
 Si no quedó claro puedes ver este video explicado con minecraft:
-[![POO](/src/img/poo.JPG)](https://youtu.be/I848HdWjLMo?si=NFPgYRX0TzdrO_TC)
+[![POO](./src/img/poo.JPG)](https://youtu.be/I848HdWjLMo?si=NFPgYRX0TzdrO_TC)
 
 ## ¿Qué Son las Clases?<a name="clases"></a>
 
@@ -1266,7 +1271,7 @@ mi_perro.ladrar()  # Imprime "Fido está ladrando: ¡Guau, guau!"
 
 Las clases en Python son una de las herramientas más versátiles y poderosas que tienes a tu disposición. Puedes crear objetos con atributos y métodos personalizados para representar conceptos y entidades del mundo real en tu código.
 
-### Método constructor
+### Método constructor<a name="constructor"></a>
 
 ¿Alguna vez has deseado crear objetos con características únicas y bien definidas en Python? El "Método Constructor" es la respuesta a ese deseo. Este método se llama automáticamente cuando creas un nuevo objeto de una clase, y su función es inicializar los atributos de ese objeto. Imagina que estás fabricando robots en tu propia fábrica de Python. Cada robot tendrá su propio nombre, color y nivel de batería, ¡y el método constructor es la clave para lograrlo!
 
@@ -1367,7 +1372,7 @@ class SuperHeroe:
 En este ejemplo, `nombre` es un atributo público que puede ser accedido desde fuera de la clase. Sin embargo, `__identidad` es un atributo privado que solo puede ser accedido desde dentro de la clase. Esto protege la identidad secreta del superhéroe.
 
 Si no quedó claro puedes ver este video explicado con minecraft:
-[![Encapsulamiento](/src/img/encapsulamiento.JPG)](https://youtu.be/8aQSD36paWU?si=6-ydXxb2cT3B_BsM)
+[![Encapsulamiento](./src/img/encapsulamiento.JPG)](https://youtu.be/8aQSD36paWU?si=6-ydXxb2cT3B_BsM)
 
 
 ## Desentrañando el Misterio de la Herencia
@@ -1508,6 +1513,23 @@ Además de instalar paquetes, pip puede ayudarte a listar, desinstalar o actuali
 En el mundo de Python, pandas no se refiere a esos adorables osos, sino a una biblioteca de código abierta diseñada para ayudarte a trabajar con datos de manera eficiente. Con pandas, puedes cargar, explorar, limpiar y analizar datos en forma de tablas llamadas **DataFrames**. 
 
 Pandas es como un cuchillo suizo para la manipulación de datos en Python. Abre un archivo de datos, examina su contenido, realiza cálculos y crea gráficos, ¡todo en un solo lugar!
+
+## ¿Cómo instalar Pandas?
+
+Para importar la librería Pandas en tus proyectos Python, es imprescindible que te asegures de que la tienes instalada. Para ello, sigue los siguientes pasos con los comandos correspondientes.
+
+
+| **PASO** | **DESCRIPCIÓN** | **COMANDO** |
+|----------|----------------|-------------|
+| 0        | (Opcional) Solo es para asegurar la instalación de Python y, de paso, conocer la versión instalada. Si estás seguro de tener Python, no es necesario este paso. | `py --version` |
+| 1        | PIP es el manejador de paquetes más popular para Python. En este paso te aseguras de tenerlo instalado y conoces la versión instalada. | `py -m pip --version` |
+| 2        | (Opcional) Actualiza la versión de PIP por si acaso. | `py -m pip install --upgrade pip` |
+| 3        | Usa PIP para instalar NumPy, la librería en la que se basa Pandas para las estructuras de datos. | `py -m pip install numpy` |
+| 4        | Instala Pandas con PIP. Bien podrías ejecutar este comando desde el inicio, pero más vale asegurarte de tener los demás paquetes instalados para no encontrarte con algún error. | `py -m pip install pandas` |
+| 5        | (Opcional) Instala Matplotlib, una librería que usa Pandas en la función plot() para crear gráficas a partir de los datos que se están tratando. | `py -m pip install matplotlib` |
+
+
+
 
 ### Inicializando Pandas
 
