@@ -1200,7 +1200,7 @@ print(type(my_string))  #
 ```
 
 Si no quedó claro puedes ver este video explicado con minecraft:
-[![POO](./src/img/poo.JPG)](https://youtu.be/I848HdWjLMo?si=NFPgYRX0TzdrO_TC)
+[![POO](./src/img/poo.jpg)](https://youtu.be/I848HdWjLMo?si=NFPgYRX0TzdrO_TC)
 
 ## ¿Qué Son las Clases?<a name="clases"></a>
 
