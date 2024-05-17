@@ -1351,30 +1351,6 @@ El "self" es fundamental en la programación orientada a objetos. Sin él, los o
 
 Piensa en el "self" como el corazón de un objeto. Es lo que hace que un objeto sea único y le permite actuar de acuerdo con su propia naturaleza. Cada objeto es como un actor en su propia historia, y el "self" es el guion que le dice qué hacer.
 
-### Encapsulación<a name="encapsulacion"></a>
-
-La encapsulación se asemeja a un cofre fuerte que protege y oculta los detalles internos de un objeto. Imagina que eres un mago y tienes un libro de hechizos. ¿Permitirías que cualquiera vea tus hechizos más poderosos? Por supuesto que no. De manera similar, la encapsulación se trata de **ocultar los detalles internos** de un objeto y **exponer solo lo que es necesario**.
-
-## Cómo Funciona la Encapsulación en Python
-
-Python hace que la encapsulación sea sencilla mediante el uso de **atributos privados** y **métodos privados**. Esto significa que algunos componentes de una clase no son accesibles desde fuera de la clase.
-
-```python
-class SuperHeroe:
-    def __init__(self, nombre, identidad_secreta):
-        self.nombre = nombre          # Atributo público
-        self.__identidad = identidad_secreta  # Atributo privado
-
-    def revelar_identidad(self):
-        return self.__identidad
-```
-
-En este ejemplo, `nombre` es un atributo público que puede ser accedido desde fuera de la clase. Sin embargo, `__identidad` es un atributo privado que solo puede ser accedido desde dentro de la clase. Esto protege la identidad secreta del superhéroe.
-
-Si no quedó claro puedes ver este video explicado con minecraft:
-[![Encapsulamiento](./src/img/encapsulamiento.JPG)](https://youtu.be/8aQSD36paWU?si=6-ydXxb2cT3B_BsM)
-
-
 ## Desentrañando el Misterio de la Herencia
 
 La herencia es un concepto clave en la programación orientada a objetos (POO) y juega un papel vital en la creación de programas sólidos y organizados. En esencia, la herencia te permite **heredar** propiedades y comportamientos de una clase existente y construir una nueva clase sobre esa base.
@@ -1414,6 +1390,33 @@ La herencia es una de las piedras angulares de la POO en Python. Te permite cons
 
 Si no quedó claro puedes ver este video explicado con minecraft:
 [![Herencia](/src/img/herencia.JPG)](https://youtu.be/yh8bTKqCOtU?si=O4cIewNxbWpnHMbi)
+
+
+## Encapsulación<a name="encapsulacion"></a>
+
+La encapsulación se asemeja a un cofre fuerte que protege y oculta los detalles internos de un objeto. Imagina que eres un mago y tienes un libro de hechizos. ¿Permitirías que cualquiera vea tus hechizos más poderosos? Por supuesto que no. De manera similar, la encapsulación se trata de **ocultar los detalles internos** de un objeto y **exponer solo lo que es necesario**.
+
+## Cómo Funciona la Encapsulación en Python
+
+Python hace que la encapsulación sea sencilla mediante el uso de **atributos privados** y **métodos privados**. Esto significa que algunos componentes de una clase no son accesibles desde fuera de la clase.
+
+```python
+class SuperHeroe:
+    def __init__(self, nombre, identidad_secreta):
+        self.nombre = nombre          # Atributo público
+        self.__identidad = identidad_secreta  # Atributo privado
+
+    def revelar_identidad(self):
+        return self.__identidad
+```
+
+En este ejemplo, `nombre` es un atributo público que puede ser accedido desde fuera de la clase. Sin embargo, `__identidad` es un atributo privado que solo puede ser accedido desde dentro de la clase. Esto protege la identidad secreta del superhéroe.
+
+Si no quedó claro puedes ver este video explicado con minecraft:
+[![Encapsulamiento](./src/img/encapsulamiento.JPG)](https://youtu.be/8aQSD36paWU?si=6-ydXxb2cT3B_BsM)
+
+
+
 
 
 ## ¿Qué es el Polimorfismo?
