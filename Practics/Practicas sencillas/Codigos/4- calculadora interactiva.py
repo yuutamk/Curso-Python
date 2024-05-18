@@ -33,6 +33,6 @@ elif operacion == '3':
 elif operacion == '4':
     resultado = division(num1, num2)
 else:
-    resultado = "Operación no válida"
+    resultado = "Opción no válida"
 
 print("Resultado:", resultado)

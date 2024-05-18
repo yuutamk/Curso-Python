@@ -60,11 +60,11 @@ elif operacion == '3':
 elif operacion == '4':
     resultado = division(num1, num2)
 else:
-    resultado = "Operación no válida"
+    resultado = "Opción no válida"
 ```
 
 - Dependiendo de la operación seleccionada por el usuario, se llama a la función correspondiente (`suma`, `resta`, `multiplicacion`, o `division`) para realizar la operación.
-- Si el usuario selecciona una operación no válida, se asigna un mensaje de error a la variable `resultado`.
+- Si el usuario selecciona una opción no válida, se asigna un mensaje de error a la variable `resultado`.
 
 #### Paso 2 (continuación): Mostrar el resultado:
 

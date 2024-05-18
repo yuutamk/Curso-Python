@@ -4,9 +4,9 @@
 Crea un nuevo archivo llamado "Calculadora_con_Menu.py".
 
 ```python
-while True:
+while opcion != '5':
 ```
-- Creamos un bucle `while` que se ejecutará indefinidamente hasta que el usuario elija la opción de salir.
+- Creamos un bucle `while` que se ejecutará indefinidamente siempre y cuando el usuario no seleccione la opción 5 de salir.
 
 **Paso 2:** Mostrar un menú de opciones al usuario.
 
@@ -30,22 +30,16 @@ while True:
 **Paso 4:** Manejar la opción seleccionada por el usuario.
 
 ```python
-    if opcion == '5':
-        break
-```
-- Si el usuario elige la opción '5', usamos `break` para salir del bucle `while` y, por lo tanto, terminar el programa.
-
-**Paso 5:** Manejar las operaciones matemáticas.
-
-```python
     try:
-        num1 = float(input("Ingresa el primer número: "))
-        num2 = float(input("Ingresa el segundo número: "))
-```
+        if '0' < opcion < '5':
+            num1 = float(input("Ingresa el primer número: "))
+            num2 = float(input("Ingresa el segundo número: "))
+``` 
 - Usamos `try` para manejar posibles excepciones al ingresar números. 
+- Definimos la condicional donde `opcion` sea mayor a 0 y menor a 5 para que solicite los números al usuario y se ejecuten las operaciones.
 - Convertimos la entrada del usuario en números de punto flotante (`float`) para permitir operaciones con decimales.
 
-**Paso 6:** Realizar la operación seleccionada.
+**Paso 5:** Realizar la operación seleccionada.
 
 ```python
         if opcion == '1':
@@ -62,12 +56,20 @@ while True:
 - Dependiendo de la opción seleccionada por el usuario, realizamos la operación matemática correspondiente.
 - En el caso de la división, verificamos si el segundo número es cero para evitar la división por cero y lanzar una excepción en caso de que ocurra.
 
-**Paso 7:** Mostrar el resultado de la operación.
+**Paso 6:** Mostrar el resultado de la operación.
 
 ```python
         print("Resultado:", resultado)
 ```
 - Imprimimos el resultado de la operación en pantalla.
+
+**Paso 7** Mostrar mensaje de error en caso de que el usuario seleccione una opcion que no se encuentra en el menu
+
+```python
+    elif opcion != '5' :
+            print("Opción no válida. Por favor, selecciona una opción válida.")
+```
+- Declaramos la condicional si opción es diferente a 5, el programa mostrara un mensaje de opción no valida, al usar elif a la misma altura if '0' < opcion < '5' el programa no validara ambas condiciones por que si la opcion elegida es valida no se imprimira el mensaje aunque sea diferente de 5
 
 **Paso 8:** Manejar excepciones.
 
