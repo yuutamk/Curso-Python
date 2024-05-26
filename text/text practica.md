@@ -1,3 +1,12 @@
+Práctica 3: Creación de un Gestor de Tareas
+En esta práctica, crearemos una aplicación de línea de comandos para gestionar tareas pendientes. Los usuarios pueden agregar, ver y eliminar tareas.
+
+Paso 1: Crea un archivo llamado "gestor_de_tareas.py".
+
+Paso 2: Escribe el código para el gestor de tareas:
+
+python
+Copy code
 tareas = []
 
 def agregar_tarea():
@@ -20,9 +29,7 @@ def eliminar_tarea():
     else:
         print("Índice fuera de rango. No se eliminó ninguna tarea.")
 
-opcion = ''
-
-while opcion != '4':
+while True:
     print("\nGestor de Tareas")
     print("1. Agregar Tarea")
     print("2. Ver Tareas")
@@ -37,5 +44,10 @@ while opcion != '4':
         ver_tareas()
     elif opcion == '3':
         eliminar_tarea()
-    elif opcion != '4':
+    elif opcion == '4':
+        break
+    else:
         print("Opción no válida. Inténtalo de nuevo.")
+Paso 3: Ejecuta el archivo y gestiona tus tareas utilizando el gestor de tareas.
+
+Este código crea un gestor de tareas que permite al usuario agregar, ver y eliminar tareas pendientes. Utiliza una lista para almacenar las tareas y funciones para realizar las operaciones de gestión de tareas. El programa se ejecuta en un bucle hasta que el usuario elige salir.
