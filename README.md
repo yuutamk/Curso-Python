@@ -1451,6 +1451,789 @@ Si no quedó claro puedes ver este video explicado con minecraft:
 [![Polimorfismo](/src/img/polimorfismo.JPG)](https://youtu.be/bblFTvuk4pY?si=KYIQrYpdIC68Ub9e)
 
 
+## Métodos de los Objetos: cadenas
+
+Una cadena en Python es una secuencia inmutable de caracteres. Esto significa que una vez que una cadena se crea, no se puede modificar. Puedes definir una cadena simplemente encerrando un texto entre comillas simples (`'...'`) o dobles (`"..."`). Por ejemplo:
+
+```python
+mi_cadena = "Hola, mundo"
+```
+
+## Métodos Comunes de las Cadenas
+
+### 1. `count(sub[, start[, end]])`
+
+Este método devuelve el número de veces que se encuentra la subcadena `sub` en la cadena. Los parámetros opcionales `start` y `end` definen una subcadena en la que buscar.
+
+```python
+texto = "Hola, mundo. Hola, Python."
+print(texto.count("Hola"))  # 2
+print(texto.count("Hola", 0, 10))  # 1
+print(texto.count("Hola", 0, 17))  # 2 porque el nuemro de caracteres abarcan los 2 textos hola
+```
+
+### 2. `find(sub[, start[, end]])`
+
+Devuelve la posición en la que se encuentra por primera vez la subcadena `sub` en la cadena, o `-1` si no se encuentra. También puede recibir los parámetros opcionales `start` y `end` para definir una subcadena en la que buscar.
+
+```python
+frase = "Hola, mundo"
+print(frase.find("mundo"))  # 6
+print(frase.find("Python")) # -1
+```
+
+### 3. `join(sequence)`
+
+Devuelve una cadena resultante de concatenar las cadenas de la secuencia `sequence`, separadas por la cadena sobre la que se llama el método.
+
+```python
+palabras = ["Hola", "Mundo", "Python"]
+separador = " "
+print(separador.join(palabras))  # "Hola Mundo Python"
+```
+
+### 4. `partition(sep)`
+
+Busca el separador `sep` en la cadena y devuelve una tupla con la subcadena hasta dicho separador, el separador en sí, y la subcadena desde el separador hasta el final de la cadena. Si no se encuentra el separador, la tupla contendrá la cadena en sí y dos cadenas vacías.
+
+```python
+frase = "Hola, mundo"
+print(frase.partition(","))  # ('Hola', ',', ' mundo')
+print(frase.partition("Python"))  # ('Hola, mundo', '', '')
+```
+
+### 5. `replace(old, new[, count])`
+
+Devuelve una cadena en la que se han reemplazado todas las ocurrencias de la cadena `old` por la cadena `new`. Si se especifica el parámetro `count`, este indica el número máximo de ocurrencias a reemplazar.
+
+```python
+texto = "Hola, mundo. Hola, Python."
+nuevo_texto = texto.replace("Hola", "Hi", 1)
+print(nuevo_texto)  # "Hi, mundo. Hola, Python."
+```
+
+### 6. `split([sep[, maxsplit]])`
+
+Devuelve una lista conteniendo las subcadenas en las que se divide nuestra cadena al dividirlas por el delimitador `sep`. En el caso de que no se especifique `sep`, se usan espacios. Si se especifica `maxsplit`, este indica el número máximo de particiones a realizar.
+
+```python
+frase = "Hola, mundo, cómo estás"
+print(frase.split(", "))  # ['Hola', 'mundo', 'cómo', 'estás']
+print(frase.split(", ", 1))  # ['Hola', 'mundo, cómo estás']
+```
+
+### 7. `upper()` y `lower()`
+
+Estos métodos son perfectos para convertir todo el texto de una cadena a mayúsculas o minúsculas respectivamente.
+
+```python
+texto = "Hola, Mundo"
+print(texto.upper())  # "HOLA, MUNDO"
+print(texto.lower())  # "hola, mundo"
+```
+
+### 8. `strip()`, `lstrip()`, y `rstrip()`
+
+A menudo, es necesario eliminar espacios en blanco o caracteres específicos del principio o el final de una cadena. Aquí es donde estos métodos resultan útiles:
+
+```python
+mensaje = "   Hola, Mundo!   "
+print(mensaje.strip())   # "Hola, Mundo!" all
+print(mensaje.lstrip())  # "Hola, Mundo!   " left
+print(mensaje.rstrip())  # "   Hola, Mundo!" right
+```
+
+## Ejemplos aplicativos
+
+### Contador de Palabras
+
+Vamos a crear una función que cuente cuántas veces aparece cada palabra en una cadena. Esto puede ser muy útil para analizar textos.
+
+```python
+def contador_palabras(texto):
+    palabras = texto.lower().split()
+    conteo = {}
+    for palabra in palabras:
+        if palabra in conteo:
+            conteo[palabra] += 1
+        else:
+            conteo[palabra] = 1
+    return conteo
+
+texto = "Hola hola hola Mundo mundo"
+print(contador_palabras(texto))
+# {'hola': 3, 'mundo': 2}
+```
+
+### Generador de Acrónimos
+
+Otra aplicación interesante es un generador de acrónimos a partir de una frase.
+
+```python
+def generar_acronimo(frase):
+    palabras = frase.split()
+    acronimo = "".join([palabra[0].upper() for palabra in palabras])
+    return acronimo
+
+frase = "Asociación de Padres de Familia"
+print(generar_acronimo(frase))  # "ADPDF"
+
+frase = "Dr. Doofenshmirtz Malvados y Asociados"
+print(generar_acronimo(frase))  # "DDMYA"
+```
+
+### Inversor de Palabras
+
+Finalmente, creemos una función que invierta cada palabra de una frase, manteniendo el orden de las palabras.
+
+```python
+def invertir_palabras(frase):
+    palabras = frase.split()
+    palabras_invertidas = [palabra[::-1] for palabra in palabras]
+    return " ".join(palabras_invertidas)
+
+frase = "Hola Mundo"
+print(invertir_palabras(frase))  # "aloH odnuM"
+```
+
+
+## Métodos Comunes de las Listas
+
+### 1. `append(object)`
+
+Este método añade un objeto al final de la lista.
+
+```python
+mi_lista = [1, 2, 3]
+mi_lista.append(4)
+print(mi_lista)  # [1, 2, 3, 4]
+```
+
+### 2. `count(value)`
+
+Devuelve el número de veces que se encuentra el valor `value` en la lista.
+
+```python
+mi_lista = [1, 2, 3, 2, 2, 4]
+print(mi_lista.count(2))  # 3
+```
+
+### 3. `extend(iterable)`
+
+Añade los elementos del iterable a la lista.
+
+```python
+mi_lista = [1, 2, 3]
+mi_lista.extend([4, 5, 6])
+print(mi_lista)  # [1, 2, 3, 4, 5, 6]
+```
+
+### 4. `index(value[, start[, stop]])`
+
+Devuelve la posición en la que se encuentra la primera ocurrencia del valor `value`. Si se especifican, `start` y `stop` definen las posiciones de inicio y fin de una sublista en la que buscar.
+
+```python
+mi_lista = [1, 2, 3, 2, 4]
+print(mi_lista.index(2))  # 1
+print(mi_lista.index(2, 2))  # 3
+```
+
+### 5. `insert(index, object)`
+
+Inserta el objeto en la posición `index`.
+
+```python
+mi_lista = [1, 2, 3]
+mi_lista.insert(1, 'a')
+print(mi_lista)  # [1, 'a', 2, 3]
+```
+
+### 6. `pop([index])`
+
+Devuelve el valor en la posición `index` y lo elimina de la lista. Si no se especifica la posición, se utiliza el último elemento de la lista.
+
+```python
+mi_lista = [1, 2, 3]
+print(mi_lista.pop())  # 3
+print(mi_lista)  # [1, 2]
+print(mi_lista.pop(0))  # 1
+print(mi_lista)  # [2]
+```
+
+### 7. `remove(value)`
+
+Elimina la primera ocurrencia de `value` en la lista.
+
+```python
+mi_lista = [1, 2, 3, 2]
+mi_lista.remove(2)
+print(mi_lista)  # [1, 3, 2]
+```
+
+### 8. `reverse()`
+
+Invierte la lista. Esta función trabaja sobre la propia lista desde la que se invoca el método, no sobre una copia.
+
+```python
+mi_lista = [1, 2, 3]
+mi_lista.reverse()
+print(mi_lista)  # [3, 2, 1]
+```
+
+### 9. `sort(cmp=None, key=None, reverse=False)`
+
+Ordena la lista. Si se especifica `cmp`, este debe ser una función que tome como parámetros dos valores `x` e `y` de la lista y devuelva `-1` si `x` es menor que `y`, `0` si son iguales y `1` si `x` es mayor que `y`. El parámetro `reverse` es un booleano que indica si se debe ordenar la lista de forma inversa.
+
+```python
+mi_lista = [3, 1, 2]
+mi_lista.sort()
+print(mi_lista)  # [1, 2, 3]
+mi_lista.sort(reverse=True)
+print(mi_lista)  # [3, 2, 1]
+```
+
+## Ejemplos aplicativos
+
+
+### Combinando Métodos de Cadenas y Listas
+
+Ahora que hemos visto algunos de los métodos más útiles para las cadenas y las listas, combinémoslos para resolver algunos problemas interesantes.
+
+### Contador de Palabras Mejorado
+
+Vamos a mejorar nuestra función de contador de palabras para que ignore la puntuación.
+
+```python
+import string
+
+def contador_palabras_mejorado(texto):
+    # Eliminar la puntuación del texto
+    texto = texto.translate(str.maketrans("", "", string.punctuation))
+    palabras = texto.lower().split()
+    conteo = {}
+    for palabra in palabras:
+        if palabra in conteo:
+            conteo[palabra] += 1
+        else:
+            conteo[palabra] = 1
+    return conteo
+
+texto = "Hola, hola. ¡Hola, mundo! Mundo, mundo."
+print(contador_palabras_mejorado(texto))
+# {'hola': 3, 'mundo': 3}
+```
+
+### Generador de Acrónimos con Filtrado
+
+Vamos a mejorar nuestra función de generador de acrónimos para que ignore palabras comunes como "de", "y", "la", etc.
+
+```python
+def generar_acronimo_mejorado(frase):
+    palabras_comunes = {"de", "y", "la", "el", "en"}
+    palabras = frase.split()
+    acronimo = "".join([palabra[0].upper() for palabra in palabras if palabra.lower() not in palabras_comunes])
+    return acronimo
+
+frase = "Asociación de Padres y Madres en la Escuela"
+print(generar_acronimo_mejorado(frase))  # "APME"
+```
+
+### Inversor de Palabras Mejorado
+
+Vamos a mejorar nuestra función de invertir palabras para que también invierta el orden de las palabras en la frase.
+
+```python
+def invertir_frase_completa(frase):
+    palabras = frase.split()
+    palabras_invertidas = [palabra[::-1] for palabra in palabras]
+    palabras_invertidas.reverse()
+    return " ".join(palabras_invertidas)
+
+frase = "Hola Mundo"
+print(invertir_frase_completa(frase))  # "odnuM aloH"
+```
+
+
+
+## Métodos Comunes de los Diccionarios
+
+### 1. `get(k[, d])`
+
+Este método busca el valor de la clave `k` en el diccionario. Es equivalente a utilizar `D[k]`, pero permite indicar un valor por defecto `d` que se devolverá si la clave no se encuentra. Si la clave no existe y no se especifica un valor por defecto, se devolverá `None`.
+
+```python
+mi_dict = {'a': 1, 'b': 2, 'c': 3}
+print(mi_dict.get('b'))  # 2
+print(mi_dict.get('d', 0))  # 0
+print(mi_dict.get('d'))  # None
+```
+
+### 2. `has_key(k)`
+
+Comprueba si el diccionario tiene la clave `k`. Es equivalente a la sintaxis `k in D`. Nota: Este método está obsoleto en Python 3 y se debe usar `k in D` en su lugar.
+
+```python
+mi_dict = {'a': 1, 'b': 2, 'c': 3}
+print('b' in mi_dict)  # True
+print('d' in mi_dict)  # False
+```
+
+### 3. `items()`
+
+Devuelve una vista de los pares clave-valor del diccionario como una lista de tuplas.
+
+```python
+mi_dict = {'a': 1, 'b': 2, 'c': 3}
+print(mi_dict.items())  # dict_items([('a', 1), ('b', 2), ('c', 3)])
+```
+
+### 4. `keys()`
+
+Devuelve una vista de las claves del diccionario.
+
+```python
+mi_dict = {'a': 1, 'b': 2, 'c': 3}
+print(mi_dict.keys())  # dict_keys(['a', 'b', 'c'])
+```
+
+### 5. `pop(k[, d])`
+
+Borra la clave `k` del diccionario y devuelve su valor. Si no se encuentra dicha clave, se devuelve `d` si se especificó el parámetro; de lo contrario, se lanza una excepción `KeyError`.
+
+```python
+mi_dict = {'a': 1, 'b': 2, 'c': 3}
+print(mi_dict.pop('b'))  # 2
+print(mi_dict)  # {'a': 1, 'c': 3}
+print(mi_dict.pop('d', 'No encontrado'))  # 'No encontrado'
+```
+
+### 6. `values()`
+
+Devuelve una vista de los valores del diccionario.
+
+```python
+mi_dict = {'a': 1, 'b': 2, 'c': 3}
+print(mi_dict.values())  # dict_values([1, 2, 3])
+```
+
+## Ejemplos aplicativos
+
+### Contador de Palabras usando Diccionarios
+
+Vamos a crear una función que cuente la frecuencia de cada palabra en un texto, utilizando un diccionario para almacenar los resultados.
+
+```python
+def contador_palabras(texto):
+    palabras = texto.lower().split()
+    conteo = {}
+    for palabra in palabras:
+        if palabra in conteo:
+            conteo[palabra] += 1
+        else:
+            conteo[palabra] = 1
+    return conteo
+
+texto = "Hola hola hola Mundo mundo"
+print(contador_palabras(texto))
+# {'hola': 3, 'mundo': 2}
+```
+
+### Combinando Métodos de Diccionarios y Listas
+
+Podemos usar diccionarios y listas juntos para realizar operaciones más complejas, como agrupar elementos.
+
+#### Agrupando Elementos por Categoría
+
+Supongamos que tenemos una lista de productos y queremos agruparlos por categoría.
+
+```python
+productos = [
+    ('manzana', 'fruta'),
+    ('lechuga', 'vegetal'),
+    ('pollo', 'carne'),
+    ('pera', 'fruta'),
+    ('zanahoria', 'vegetal')
+]
+
+agrupados = {}
+for producto, categoria in productos:
+    if categoria in agrupados:
+        agrupados[categoria].append(producto)
+    else:
+        agrupados[categoria] = [producto]
+
+print(agrupados)
+# {'fruta': ['manzana', 'pera'], 'vegetal': ['lechuga', 'zanahoria'], 'carne': ['pollo']}
+```
+
+### Invirtiendo un Diccionario
+
+Otra aplicación interesante es invertir un diccionario, intercambiando claves y valores.
+
+```python
+mi_dict = {'a': 1, 'b': 2, 'c': 3}
+invertido = {v: k for k, v in mi_dict.items()}
+print(invertido)  # {1: 'a', 2: 'b', 3: 'c'}
+```
+
+
+## Programación Funcional
+
+La programación funcional es un paradigma en el que la programación se basa casi en su totalidad en funciones, entendiendo el concepto de función según su definición matemática, y no como los simples subprogramas de los lenguajes imperativos. En los lenguajes funcionales puros, un programa consiste exclusivamente en la aplicación de distintas funciones a un valor de entrada para obtener un valor de salida. Python, sin ser un lenguaje puramente funcional, incluye varias características tomadas de los lenguajes funcionales, como las funciones de orden superior y las funciones lambda (funciones anónimas).
+
+### Beneficios de la Programación Funcional
+
+1. **Código más limpio y expresivo:** Las funciones puras, sin efectos secundarios, son más fáciles de razonar y probar.
+2. **Facilidad para la concurrencia:** La ausencia de estado mutable simplifica la ejecución en paralelo.
+3. **Mantenibilidad:** Menos dependencias entre partes del código facilita su comprensión y modificación.
+
+### Funciones Puras
+
+Una función pura es aquella que, dada la misma entrada, siempre produce la misma salida y no tiene efectos secundarios observables. Por ejemplo:
+
+```python
+def suma(a, b):
+    return a + b
+```
+
+
+
+---
+
+### Funciones de Orden Superior
+
+
+
+El concepto de funciones de orden superior se refiere al uso de funciones como si de un valor cualquiera se tratara, permitiendo pasar funciones como parámetros de otras funciones o devolver funciones como valor de retorno. Esto es posible porque, en Python, todo son objetos, incluidas las funciones.
+
+### Ejemplo en Python
+
+```python
+def saludar(lang):
+    def saludar_es():
+        print("Hola")
+    
+    def saludar_en():
+        print("Hi")
+    
+    def saludar_fr():
+        print("Salut")
+    
+    lang_func = {
+        "es": saludar_es,
+        "en": saludar_en,
+        "fr": saludar_fr
+    }
+    
+    return lang_func[lang]
+
+f = saludar("fr")
+f()
+```
+
+En este ejemplo, llamamos a la función `saludar` con un parámetro `"fr"`. Dentro de `saludar`, se definen varias funciones (`saludar_es`, `saludar_en` y `saludar_fr`) y se crea un diccionario que asigna cadenas de texto a cada una de estas funciones. El valor de retorno de `saludar` es una de estas funciones, determinada por el valor del parámetro `lang`.
+
+### Ejemplo con `map`
+
+La función `map` aplica una función a todos los elementos de una lista o secuencia y devuelve un iterable de tipo `map`.
+
+
+```python
+# Definimos una función para calcular el cuadrado de un número
+def cuadrado(x):
+    return x ** 2
+
+numeros = [1, 2, 3, 4, 5]
+cuadrados = list(map(cuadrado, numeros))
+print(cuadrados)
+```
+
+### Explicación:
+1. Se define la función `cuadrado` que toma un argumento `x` y devuelve su cuadrado.
+2. Se utiliza `map` con la función `cuadrado` y la lista `numeros` para obtener una lista de los cuadrados de los números.
+3. Se convierte el resultado de `map` en una lista y se imprime.
+
+
+
+
+### Ejemplo con `filter`
+
+Tal como su nombre indica filter significa filtrar, y es una de mis funciones
+favoritas, ya que a partir de una lista o iterador y una función condicional, es
+capaz de devolver una nueva colección con los elementos filtrados que cumplan
+la condición. Por ejemplo, supongamos que tenemos una lista de varios números
+y queremos filtrarla, quedándonos únicamente con los múltiplos de 5:
+
+```python
+def multiple(numero):       # Primero declaramos una función condicional
+    if numero % 5 == 0:     # Comprobamos si un número es múltiplo de cinco
+        return True         # Sólo devolvemos True si lo es
+    else:
+        return False        # Devolvemos False si no lo es
+
+numeros = [2, 5, 10, 23, 50, 33]
+
+filter(multiple, numeros)
+
+# Utilizamos list() para convertir el resultado de filter en una lista y poder imprimirlo
+# Casteo de filter a lista
+result = list(filter(multiple, numeros))
+print(result)
+```
+
+Si ejecutamos el filtro obtenemos un objeto de tipo filtro, pero podemos
+transformarlo en una lista fácilmente haciendo un cast (conversión):
+
+```python
+list(filter(multiple, numeros))
+```
+
+
+```code
+[5, 10, 50]
+```
+
+### Ejemplo con `reduce`
+
+Reduce es una función incorporada de Python 2, que toma como argumento un
+conjunto de valores (una lista, una tupla, o cualquier objeto iterable) y lo "reduce"
+a un único valor. Cómo se obtiene ese único valor a partir de la colección pasada
+como argumento dependerá de la función aplicada.
+
+Por ejemplo, el siguiente código reduce la lista [1, 2, 3, 4] al número 10 aplicando
+la función add(a, b), que retorna la suma de sus argumentos.
+
+```python
+from functools import reduce
+
+def add(a, b):
+    return a + b
+
+print(reduce(add, [1, 2, 3, 4]))  # 10
+```
+
+La función pasada como primer argumento debe tener dos parámetros. reduce()
+se encargará de llamarla de forma acumulativa (es decir, preservando el
+resultado de llamadas anteriores) de izquierda a derecha. De modo que el código
+anterior es similar a:
+
+```python
+print(add(add(add(1,2), 3), 4))
+```
+
+### Ejercicio
+
+Crea una lista de números y usa `map` para elevar cada número al cuadrado, `filter` para seleccionar solo los números impares y `reduce` para obtener el producto de todos los números de la lista filtrada.
+
+```python
+from functools import reduce
+
+# Función para calcular el cuadrado de un número
+def calcular_cuadrado(x):
+    return x ** 2
+
+# Función para verificar si un número es impar
+def es_impar(x):
+    return x % 2 != 0
+
+# Función para multiplicar dos números
+def multiplicar(x, y):
+    return x * y
+
+numeros = [1, 2, 3, 4, 5]
+
+# Mapeamos los números a sus cuadrados
+cuadrados = list(map(calcular_cuadrado, numeros))
+
+# Filtramos los números cuadrados para obtener los impares
+impares = list(filter(es_impar, cuadrados))
+
+# Reducimos la lista de números impares para obtener el producto
+producto = reduce(multiplicar, impares)
+
+print(producto)
+```
+
+---
+
+### Recursión
+
+
+La recursión es una técnica en la que una función se llama a sí misma. Es una alternativa a la iteración y es común en la programación funcional.
+
+### Ejemplo Clásico: Factorial
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+print(factorial(5))
+```
+
+### Ejercicio
+
+Intenta escribir una función recursiva para calcular el n-ésimo número de Fibonacci. Recuerda que:
+- Fibonacci(0) = 0
+- Fibonacci(1) = 1
+- Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)
+
+```python
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(6))
+```
+
+---
+
+
+
+### Composición de Funciones
+
+La composición de funciones es la aplicación sucesiva de múltiples funciones. En Python, puedes usar la composición para combinar funciones de manera limpia y legible.
+
+### Ejemplo de Composición
+
+
+
+```python
+def doblar(x):
+    return x * 2
+
+def incrementar(x):
+    return x + 1
+
+def componer(f, g):
+    def funcion_compuesta(x):
+        return f(g(x))
+    return funcion_compuesta
+
+f_compuesta = componer(doblar, incrementar)
+print(f_compuesta(3))  # (3 + 1) * 2 = 8
+```
+
+### Explicación:
+1. Se definen las funciones `doblar` y `incrementar` que duplican un número y le suman 1, respectivamente.
+2. Se define la función `componer` que toma dos funciones como argumentos y devuelve una función compuesta.
+3. En la función `componer`, se define una nueva función llamada `funcion_compuesta` que aplica primero la función `g` y luego la función `f`.
+4. La función `componer` devuelve la función `funcion_compuesta`.
+5. Se llama a `componer` con las funciones `doblar` e `incrementar`, creando así la función compuesta `f_compuesta`.
+6. Se imprime el resultado de `f_compuesta(3)`, que debería ser `8` según la descripción del comentario.
+
+
+
+---
+
+
+
+### Funciones Lambda
+
+En Python, una función lambda se refiere a una pequeña función anónima. Las llamamos “funciones anónimas” porque técnicamente carecen de nombre. Al contrario que una función normal, no la definimos con la palabra clave estándar `def`. En su lugar, las funciones lambda se definen como una línea que ejecuta una sola expresión.
+
+**Sintaxis básica**
+
+Todas las funciones Lambda en Python tienen exactamente la misma sintaxis:
+
+
+```python
+# Escribo p1 y p2 como parametros 1 y 2 de la funcion
+
+lambda p1, p2: expresion
+```
+
+### Ejemplo de Función Lambda
+
+```python
+# Función normal
+def suma(x, y):
+    return x + y
+
+# Función lambda
+suma_dos = lambda x, y: x + y
+
+# Uso de la función lambda
+resultado = suma_dos(2, 3)
+print(resultado)  # 5
+```
+
+### Ejercicio
+
+Crea una función lambda que eleve al cubo un número y pruébala con diferentes valores.
+
+```python
+cubo = lambda x: x**3
+print(cubo(3))  # 27
+print(cubo(4))  # 64
+```
+
+---
+
+
+### Bibliotecas Funcionales
+
+Python tiene varias bibliotecas que facilitan la programación funcional, como `functools`, `itertools` y `toolz`.
+
+### Ejemplo con `toolz`
+
+```python
+from toolz import curry
+
+@curry
+def multiplicar(x, y):
+    return x * y
+
+doblar = multiplicar(2)
+print(doblar(5))  # 10
+```
+
+
+La función `curry` permite crear funciones curried en Python. Una función curried es una función que toma múltiples argumentos y los divide en una serie de funciones que toman uno o más argumentos. Esto puede ser útil cuando se desea aplicar parcialmente una función, es decir, fijar algunos de sus argumentos antes de llamarla.
+
+
+
+1. **Importación de la función `curry` desde la librería `toolz`:**
+   ```python
+   from toolz import curry
+   ```
+   La función `curry` se importa desde la librería `toolz`.
+
+2. **Definición de la función `multiplicar`:**
+   ```python
+   @curry
+   def multiplicar(x, y):
+       return x * y
+   ```
+   Esta función toma dos argumentos `x` e `y`, y devuelve su producto. Al decorarla con `@curry`, la función `multiplicar` se convierte en una función curried.
+
+**Ejemplo de uso:**
+
+Ahora, puedes llamar a la función `multiplicar` con uno o más argumentos, o aplicar parcialmente los argumentos.
+
+```python
+# Llamada normal
+print(multiplicar(3, 4))  # Salida: 12
+
+# Aplicación parcial
+triplicar = multiplicar(3)
+print(triplicar(4))  # Salida: 12
+```
+
+En este ejemplo, primero llamamos a `multiplicar` con dos argumentos, `3` y `4`, lo que devuelve `12`. Luego, aplicamos parcialmente la función `multiplicar` con el argumento `3`, lo que nos da una nueva función llamada `triplicar`, que multiplica su argumento por `3`. Finalmente, llamamos a `triplicar` con el argumento `4`, lo que también nos devuelve `12`.
+
+
+### Ejercicio
+
+Explora la biblioteca `toolz` y prueba algunas de sus funciones en tus propios ejemplos. Comienza con `pipe` y `curry` y ve cómo pueden simplificar tu código.
+
+
+
 ## ¿Qué son los Módulos Externos?
 
 Ya hemos visto anteriormente los módulos externos y vimos que son pedazos de código escritos por otros desarrolladores que puedes usar en tus propios programas. Piensa en ellos como hechizos predefinidos que puedes invocar para realizar tareas específicas sin tener que escribir todo desde cero. Esto hace que Python sea aún más poderoso y versátil.
