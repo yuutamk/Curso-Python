@@ -909,13 +909,13 @@ Este enfoque es útil cuando necesitas realizar una acción o procesamiento en c
 
 ¡Fantástico! Ahora conoces los diccionarios en Python y cómo utilizarlos para organizar datos estructurados de manera eficiente. Los diccionarios son como tu propio libro de definiciones personal.
 
-### Estructuras de Control en Python<a name="estructuras"></a>
+## Estructuras de Control en Python<a name="estructuras"></a>
 
 Las estructuras de control son como las herramientas que nos permiten tomar decisiones y repetir acciones en nuestros programas. Imagina que eres un director de orquesta y tienes que dirigir a los músicos para que toquen en armonía. Las estructuras de control en Python son como tu batuta mágica que te permite dirigir el flujo de un programa. Te ayudan a tomar decisiones y repetir acciones según sea necesario.
 
 Vamos a conocer dos tipos principales de estructuras de control en Python:
 
-#### 1. Condicionales (if)<a name="estructura-if"></a>
+### 1. Condicionales (if)<a name="estructura-if"></a>
 
 Imagina que tienes un interruptor en tu habitación que enciende o apaga una luz. Las sentencias "if" en Python son como ese interruptor; te permiten tomar decisiones en tus programas. Puedes decirle a tu programa qué hacer si se cumple una condición y qué hacer si no.
 
@@ -962,7 +962,7 @@ Aquí, el programa verifica si un número es par o impar y muestra un mensaje en
 
 ¡Magnífico! Ahora conoces las sentencias "if" en Python y cómo usarlas para tomar decisiones en tus programas. Estas sentencias son como las instrucciones que das a tu programa para que tome caminos diferentes según las condiciones.
 
-#### 2. Estructura de Control de Bucle (for)<a name="ciclo-for"></a>
+### 2. Estructura de Control de Bucle (for)<a name="ciclo-for"></a>
 
 Imagina que tienes una lista de tareas y quieres realizar una acción para cada elemento de la lista. El bucle "for" en Python es como tu asistente personal que te ayuda a recorrer y realizar acciones en cada elemento de una secuencia, como una lista o una cadena de texto.
 
