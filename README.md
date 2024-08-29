@@ -1101,6 +1101,206 @@ Aquí, creamos una función llamada `calcular_cuadrado` que toma un número como
 
 ¡Excelente trabajo! Ahora conoces las funciones en Python y cómo usarlas para agrupar y reutilizar código. Las funciones son como herramientas que puedes utilizar una y otra vez en diferentes partes de tu programa.
 
+
+# Funciones Lambda
+
+
+En Python, una función lambda es una función anónima, lo que significa que no tiene un nombre definido. A diferencia de las funciones tradicionales definidas con `def`, las funciones lambda están diseñadas para tareas simples y rápidas, donde una función completa podría ser excesiva.
+
+La sintaxis básica de una función lambda es:
+
+```python
+lambda argumentos: expresión
+```
+
+Donde:
+- `argumentos`: Son los parámetros que la función lambda acepta.
+- `expresión`: Es una única expresión que se evalúa y se devuelve como resultado.
+
+**Ejemplo Simple:**
+
+```python
+suma = lambda x, y: x + y
+resultado = suma(5, 3)
+print(resultado)  # Output: 8
+```
+
+En este ejemplo, la función lambda toma dos argumentos (`x` y `y`) y devuelve su suma. A diferencia de las funciones tradicionales, la función lambda se define y se utiliza en una sola línea.
+
+#### Ventajas de Usar Funciones Lambda
+
+1. **Concisión:** Las funciones lambda permiten escribir código más compacto, eliminando la necesidad de definir funciones completas para operaciones simples.
+   
+2. **Flexibilidad:** Son útiles cuando se necesita una función temporal que solo se va a usar una vez o en un contexto específico, como argumentos para otras funciones.
+
+3. **Legibilidad:** Aunque pueden hacer que el código sea más denso, cuando se usan correctamente, las funciones lambda pueden hacer que las operaciones simples sean más fáciles de entender.
+
+#### Aplicaciones Comunes de las Funciones Lambda
+
+Las funciones lambda son especialmente útiles en combinación con otras funciones de Python que aceptan funciones como argumentos, como `map()`, `filter()`, y `sorted()`.
+
+**1. Usando `map()` con Lambda:**
+
+La función `map()` aplica una función a cada elemento de un iterable (como una lista). Aquí es donde las funciones lambda brillan.
+
+```python
+numeros = [1, 2, 3, 4]
+cuadrados = list(map(lambda x: x ** 2, numeros))
+print(cuadrados)  # Output: [1, 4, 9, 16]
+```
+
+En este ejemplo, la función lambda eleva cada número de la lista `numeros` al cuadrado, generando una nueva lista de resultados.
+
+**2. Usando `filter()` con Lambda:**
+
+La función `filter()` filtra elementos de un iterable según una condición definida por una función.
+
+```python
+numeros = [1, 2, 3, 4, 5, 6]
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+print(pares)  # Output: [2, 4, 6]
+```
+
+Aquí, la función lambda devuelve `True` solo para los números que son divisibles por 2, filtrando así los números pares de la lista.
+
+**3. Usando `sorted()` con Lambda:**
+
+La función `sorted()` puede ordenar elementos en una secuencia según una clave proporcionada por una función.
+
+```python
+frutas = ['manzana', 'kiwi', 'banana', 'cereza']
+ordenadas = sorted(frutas, key=lambda x: len(x))
+print(ordenadas)  # Output: ['kiwi', 'banana', 'cereza', 'manzana']
+```
+
+En este ejemplo, la lista `frutas` se ordena en función de la longitud de cada palabra, utilizando una función lambda como clave de ordenación.
+
+#### Cuándo Evitar las Funciones Lambda
+
+Aunque las funciones lambda son útiles, no siempre son la mejor opción. Si la operación que estás realizando es compleja o si la función lambda comienza a ser difícil de leer, es mejor definir una función normal con `def`.
+
+Por ejemplo, una función lambda muy larga o anidada puede ser difícil de entender y mantener:
+
+```python
+complicada = lambda x: (x ** 2 + x + 1) if x > 0 else (x ** 2 - x + 1)
+```
+
+Este tipo de función es mejor manejarlo con una definición de función tradicional:
+
+```python
+def complicada(x):
+    if x > 0:
+        return x ** 2 + x + 1
+    else:
+        return x ** 2 - x + 1
+```
+
+
+## Funciones `map()`, `filter()`, y `sorted()`
+
+#### `map()`: Transformando Colecciones
+
+La función `map()` es una herramienta que te permite aplicar una función a cada elemento de un iterable (como una lista o una tupla) y devuelve un nuevo iterable con los resultados. Es como tener un asistente que transforma cada ítem de una lista según tus instrucciones, sin que tengas que escribir un bucle explícito.
+
+**Sintaxis:**
+
+```python
+map(función, iterable)
+```
+
+- `función`: Una función que se aplica a cada elemento del iterable.
+- `iterable`: La colección de datos que quieres transformar.
+
+**Ejemplo con `map()`:**
+
+```python
+numeros = [1, 2, 3, 4, 5]
+cuadrados = list(map(lambda x: x ** 2, numeros))
+print(cuadrados)  # Output: [1, 4, 9, 16, 25]
+```
+
+En este ejemplo, la función `lambda x: x ** 2` se aplica a cada número en la lista `numeros`, creando una nueva lista con los números elevados al cuadrado.
+
+**¿Cuándo usar `map()`?**
+
+Usa `map()` cuando necesites transformar todos los elementos de una colección de manera uniforme. Es particularmente útil cuando tienes una función que realiza una operación simple y deseas aplicarla a toda una colección sin tener que escribir un bucle explícito.
+
+#### `filter()`: Filtrando Colecciones
+
+Mientras que `map()` transforma colecciones, `filter()` selecciona elementos de una colección que cumplen con una determinada condición. Imagina que tienes una lista de números y solo quieres los pares. `filter()` te permite hacer esto de manera elegante y eficiente.
+
+**Sintaxis:**
+
+```python
+filter(función, iterable)
+```
+
+- `función`: Una función que devuelve `True` o `False` para determinar si un elemento debe incluirse en el nuevo iterable.
+- `iterable`: La colección de datos que quieres filtrar.
+
+**Ejemplo con `filter()`:**
+
+```python
+numeros = [1, 2, 3, 4, 5, 6]
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+print(pares)  # Output: [2, 4, 6]
+```
+
+Aquí, `filter()` selecciona solo los números que son divisibles por 2, devolviendo una lista con los números pares.
+
+**¿Cuándo usar `filter()`?**
+
+`filter()` es ideal cuando necesitas reducir una colección a solo los elementos que cumplen con una condición específica. Es perfecto para situaciones donde un bucle `for` y una declaración `if` harían el trabajo, pero quieres un enfoque más limpio y conciso.
+
+#### `sorted()`: Ordenando Colecciones
+
+La función `sorted()` te permite ordenar una colección de datos. No solo ordena de manera ascendente o descendente, sino que también te permite especificar criterios personalizados para ordenar, como la longitud de cadenas o valores específicos de diccionarios.
+
+**Sintaxis:**
+
+```python
+sorted(iterable, key=None, reverse=False)
+```
+
+- `iterable`: La colección de datos que quieres ordenar.
+- `key`: (Opcional) Una función que sirve como clave para la ordenación.
+- `reverse`: (Opcional) Un booleano que indica si la ordenación debe ser en orden descendente.
+
+**Ejemplo con `sorted()`:**
+
+```python
+frutas = ['manzana', 'pera', 'banana', 'cereza']
+ordenadas = sorted(frutas, key=lambda x: len(x))
+print(ordenadas)  # Output: ['pera', 'banana', 'cereza', 'manzana']
+```
+
+En este ejemplo, las frutas se ordenan según la longitud de sus nombres.
+
+**¿Cuándo usar `sorted()`?**
+
+Usa `sorted()` cuando necesites ordenar datos. Es útil para organizar listas en orden ascendente, descendente, o bajo un criterio específico. También es excelente cuando trabajas con datos complejos y necesitas ordenar según una propiedad particular.
+
+#### Combinando `map()`, `filter()`, y `sorted()`
+
+Una de las mayores ventajas de `map()`, `filter()`, y `sorted()` es que pueden combinarse para crear flujos de datos altamente eficientes. Por ejemplo, imagina que tienes una lista de números y quieres primero filtrar los números pares, luego elevarlos al cuadrado, y finalmente ordenarlos en orden descendente:
+
+**Ejemplo de combinación:**
+
+```python
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+resultado = sorted(
+    map(lambda x: x ** 2, filter(lambda x: x % 2 == 0, numeros)),
+    reverse=True
+)
+
+print(resultado)  # Output: [100, 64, 36, 16, 4]
+```
+
+Este código primero filtra los números pares, luego los eleva al cuadrado, y finalmente los ordena en orden descendente.
+
+
+
 # Módulos<a name="modulos"></a>
 
 Imagina que estás construyendo una ciudad y necesitas diferentes tipos de edificios: escuelas, hospitales, y más. Los módulos en Python son como esos edificios especializados que puedes agregar a tu ciudad de Python. Cada módulo contiene funciones y variables que puedes utilizar en tu programa.
@@ -1164,6 +1364,51 @@ print("El doble de", numero, "es", resultado)
 Aquí, importamos el módulo personalizado "mi_modulo.py" y utilizamos sus funciones en nuestro programa principal.
 
 ¡Fantástico! Ahora conoces los módulos en Python y cómo usarlos para aprovechar funciones y variables adicionales. Los módulos son como tesoros de código que puedes agregar a tu programa para hacerlo más poderoso.
+
+
+# Recursividad
+
+La recursividad es una técnica fundamental en programación donde una función se llama a sí misma para resolver problemas complejos de manera más sencilla y estructurada.
+
+### ¿Cómo se aplica la recursividad en el cálculo del factorial?
+La recursividad se entiende mejor con ejemplos prácticos. El factorial de un número se define como el producto de todos los números desde ese número hasta 1. Por ejemplo, el factorial de 5 (5!) es 5 * 4 * 3 * 2 * 1.
+
+En código Python, la función factorial se puede definir recursivamente de la siguiente manera:
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+```
+
+Este código sigue dos casos clave en la recursividad:
+
+Caso base: cuando `n` es 0, la función retorna 1.
+Caso recursivo: cuando `n` es mayor que 0, la función retorna `n` multiplicado por el factorial de `n-1`.
+
+### ¿Cómo funciona la recursividad en la serie de Fibonacci?
+
+La serie de Fibonacci es otra aplicación clásica de la recursividad. En esta serie, cada número es la suma de los dos anteriores, comenzando con 0 y 1. La fórmula es:
+
+[ F(n) = F(n-1) + F(n-2) ]
+
+El código Python para calcular el número n-ésimo en la serie de Fibonacci usando recursividad es el siguiente:
+
+```python
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+```        
+
+
+
+
+
 # Excepciones<a name="excepciones"></a>
 
 Imagina que estás cocinando tu plato favorito y te das cuenta de que te falta un ingrediente importante. Las excepciones en Python son como esos momentos inesperados en la programación donde algo sale mal, y necesitas manejar la situación de manera elegante.
@@ -1318,6 +1563,427 @@ En este ejemplo, abrimos el archivo en modo agregado y agregamos más texto al f
 Con esto, completamos nuestra segunda semana de aprendizaje de Python. ¡Esperando que estos conceptos te ayuden a ampliar tus habilidades y conocimientos en programación con Python! En la próxima semana, continuaremos explorando temas avanzados, como programación orientada a objetos y bibliotecas externas.
 
 ---
+
+
+## Programación Funcional
+
+La programación funcional es un paradigma en el que la programación se basa casi en su totalidad en funciones, entendiendo el concepto de función según su definición matemática, y no como los simples subprogramas de los lenguajes imperativos. En los lenguajes funcionales puros, un programa consiste exclusivamente en la aplicación de distintas funciones a un valor de entrada para obtener un valor de salida. Python, sin ser un lenguaje puramente funcional, incluye varias características tomadas de los lenguajes funcionales, como las funciones de orden superior y las funciones lambda (funciones anónimas).
+
+### Beneficios de la Programación Funcional
+
+1. **Código más limpio y expresivo:** Las funciones puras, sin efectos secundarios, son más fáciles de razonar y probar.
+2. **Facilidad para la concurrencia:** La ausencia de estado mutable simplifica la ejecución en paralelo.
+3. **Mantenibilidad:** Menos dependencias entre partes del código facilita su comprensión y modificación.
+
+### Funciones Puras
+
+Una función pura es aquella que, dada la misma entrada, siempre produce la misma salida y no tiene efectos secundarios observables. Por ejemplo:
+
+```python
+def suma(a, b):
+    return a + b
+```
+
+
+
+---
+
+### Funciones de Orden Superior
+
+
+
+El concepto de funciones de orden superior se refiere al uso de funciones como si de un valor cualquiera se tratara, permitiendo pasar funciones como parámetros de otras funciones o devolver funciones como valor de retorno. Esto es posible porque, en Python, todo son objetos, incluidas las funciones.
+
+### Ejemplo en Python
+
+```python
+def saludar(lang):
+    def saludar_es():
+        print("Hola")
+    
+    def saludar_en():
+        print("Hi")
+    
+    def saludar_fr():
+        print("Salut")
+    
+    lang_func = {
+        "es": saludar_es,
+        "en": saludar_en,
+        "fr": saludar_fr
+    }
+    
+    return lang_func[lang]
+
+f = saludar("fr")
+f()
+```
+
+En este ejemplo, llamamos a la función `saludar` con un parámetro `"fr"`. Dentro de `saludar`, se definen varias funciones (`saludar_es`, `saludar_en` y `saludar_fr`) y se crea un diccionario que asigna cadenas de texto a cada una de estas funciones. El valor de retorno de `saludar` es una de estas funciones, determinada por el valor del parámetro `lang`.
+
+### Ejemplo con `map`
+
+La función `map` aplica una función a todos los elementos de una lista o secuencia y devuelve un iterable de tipo `map`.
+
+
+```python
+# Definimos una función para calcular el cuadrado de un número
+def cuadrado(x):
+    return x ** 2
+
+numeros = [1, 2, 3, 4, 5]
+cuadrados = list(map(cuadrado, numeros))
+print(cuadrados)
+```
+
+### Explicación:
+1. Se define la función `cuadrado` que toma un argumento `x` y devuelve su cuadrado.
+2. Se utiliza `map` con la función `cuadrado` y la lista `numeros` para obtener una lista de los cuadrados de los números.
+3. Se convierte el resultado de `map` en una lista y se imprime.
+
+
+
+
+### Ejemplo con `filter`
+
+Tal como su nombre indica filter significa filtrar, y es una de mis funciones
+favoritas, ya que a partir de una lista o iterador y una función condicional, es
+capaz de devolver una nueva colección con los elementos filtrados que cumplan
+la condición. Por ejemplo, supongamos que tenemos una lista de varios números
+y queremos filtrarla, quedándonos únicamente con los múltiplos de 5:
+
+```python
+def multiple(numero):       # Primero declaramos una función condicional
+    if numero % 5 == 0:     # Comprobamos si un número es múltiplo de cinco
+        return True         # Sólo devolvemos True si lo es
+    else:
+        return False        # Devolvemos False si no lo es
+
+numeros = [2, 5, 10, 23, 50, 33]
+
+filter(multiple, numeros)
+
+# Utilizamos list() para convertir el resultado de filter en una lista y poder imprimirlo
+# Casteo de filter a lista
+result = list(filter(multiple, numeros))
+print(result)
+```
+
+Si ejecutamos el filtro obtenemos un objeto de tipo filtro, pero podemos
+transformarlo en una lista fácilmente haciendo un cast (conversión):
+
+```python
+list(filter(multiple, numeros))
+```
+
+
+```code
+[5, 10, 50]
+```
+
+### Ejemplo con `reduce`
+
+Reduce es una función incorporada de Python 2, que toma como argumento un
+conjunto de valores (una lista, una tupla, o cualquier objeto iterable) y lo "reduce"
+a un único valor. Cómo se obtiene ese único valor a partir de la colección pasada
+como argumento dependerá de la función aplicada.
+
+Por ejemplo, el siguiente código reduce la lista [1, 2, 3, 4] al número 10 aplicando
+la función add(a, b), que retorna la suma de sus argumentos.
+
+```python
+from functools import reduce
+
+def add(a, b):
+    return a + b
+
+print(reduce(add, [1, 2, 3, 4]))  # 10
+```
+
+La función pasada como primer argumento debe tener dos parámetros. reduce()
+se encargará de llamarla de forma acumulativa (es decir, preservando el
+resultado de llamadas anteriores) de izquierda a derecha. De modo que el código
+anterior es similar a:
+
+```python
+print(add(add(add(1,2), 3), 4))
+```
+
+### Ejercicio
+
+Crea una lista de números y usa `map` para elevar cada número al cuadrado, `filter` para seleccionar solo los números impares y `reduce` para obtener el producto de todos los números de la lista filtrada.
+
+```python
+from functools import reduce
+
+# Función para calcular el cuadrado de un número
+def calcular_cuadrado(x):
+    return x ** 2
+
+# Función para verificar si un número es impar
+def es_impar(x):
+    return x % 2 != 0
+
+# Función para multiplicar dos números
+def multiplicar(x, y):
+    return x * y
+
+numeros = [1, 2, 3, 4, 5]
+
+# Mapeamos los números a sus cuadrados
+cuadrados = list(map(calcular_cuadrado, numeros))
+
+# Filtramos los números cuadrados para obtener los impares
+impares = list(filter(es_impar, cuadrados))
+
+# Reducimos la lista de números impares para obtener el producto
+producto = reduce(multiplicar, impares)
+
+print(producto)
+```
+
+---
+
+### Recursión
+
+
+La recursión es una técnica en la que una función se llama a sí misma. Es una alternativa a la iteración y es común en la programación funcional.
+
+### Ejemplo Clásico: Factorial
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+print(factorial(5))
+```
+
+### Ejercicio
+
+Intenta escribir una función recursiva para calcular el n-ésimo número de Fibonacci. Recuerda que:
+- Fibonacci(0) = 0
+- Fibonacci(1) = 1
+- Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)
+
+```python
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(6))
+```
+
+---
+
+
+
+### Composición de Funciones
+
+La composición de funciones es la aplicación sucesiva de múltiples funciones. En Python, puedes usar la composición para combinar funciones de manera limpia y legible.
+
+### Ejemplo de Composición
+
+
+
+```python
+def doblar(x):
+    return x * 2
+
+def incrementar(x):
+    return x + 1
+
+def componer(f, g):
+    def funcion_compuesta(x):
+        return f(g(x))
+    return funcion_compuesta
+
+f_compuesta = componer(doblar, incrementar)
+print(f_compuesta(3))  # (3 + 1) * 2 = 8
+```
+
+### Explicación:
+1. Se definen las funciones `doblar` y `incrementar` que duplican un número y le suman 1, respectivamente.
+2. Se define la función `componer` que toma dos funciones como argumentos y devuelve una función compuesta.
+3. En la función `componer`, se define una nueva función llamada `funcion_compuesta` que aplica primero la función `g` y luego la función `f`.
+4. La función `componer` devuelve la función `funcion_compuesta`.
+5. Se llama a `componer` con las funciones `doblar` e `incrementar`, creando así la función compuesta `f_compuesta`.
+6. Se imprime el resultado de `f_compuesta(3)`, que debería ser `8` según la descripción del comentario.
+
+
+
+---
+
+
+
+### Funciones Lambda
+
+En Python, una función lambda se refiere a una pequeña función anónima. Las llamamos “funciones anónimas” porque técnicamente carecen de nombre. Al contrario que una función normal, no la definimos con la palabra clave estándar `def`. En su lugar, las funciones lambda se definen como una línea que ejecuta una sola expresión.
+
+**Sintaxis básica**
+
+Todas las funciones Lambda en Python tienen exactamente la misma sintaxis:
+
+
+```python
+# Escribo p1 y p2 como parametros 1 y 2 de la funcion
+
+lambda p1, p2: expresion
+```
+
+### Ejemplo de Función Lambda
+
+```python
+# Función normal
+def suma(x, y):
+    return x + y
+
+# Función lambda
+suma_dos = lambda x, y: x + y
+
+# Uso de la función lambda
+resultado = suma_dos(2, 3)
+print(resultado)  # 5
+```
+
+### Ejercicio
+
+Crea una función lambda que eleve al cubo un número y pruébala con diferentes valores.
+
+```python
+cubo = lambda x: x**3
+print(cubo(3))  # 27
+print(cubo(4))  # 64
+```
+
+---
+
+
+### Bibliotecas Funcionales
+
+Python tiene varias bibliotecas que facilitan la programación funcional, como `functools`, `itertools` y `toolz`.
+
+### Ejemplo con `toolz`
+
+```python
+from toolz import curry
+
+@curry
+def multiplicar(x, y):
+    return x * y
+
+doblar = multiplicar(2)
+print(doblar(5))  # 10
+```
+
+
+La función `curry` permite crear funciones curried en Python. Una función curried es una función que toma múltiples argumentos y los divide en una serie de funciones que toman uno o más argumentos. Esto puede ser útil cuando se desea aplicar parcialmente una función, es decir, fijar algunos de sus argumentos antes de llamarla.
+
+
+
+1. **Importación de la función `curry` desde la librería `toolz`:**
+   ```python
+   from toolz import curry
+   ```
+   La función `curry` se importa desde la librería `toolz`.
+
+2. **Definición de la función `multiplicar`:**
+   ```python
+   @curry
+   def multiplicar(x, y):
+       return x * y
+   ```
+   Esta función toma dos argumentos `x` e `y`, y devuelve su producto. Al decorarla con `@curry`, la función `multiplicar` se convierte en una función curried.
+
+**Ejemplo de uso:**
+
+Ahora, puedes llamar a la función `multiplicar` con uno o más argumentos, o aplicar parcialmente los argumentos.
+
+```python
+# Llamada normal
+print(multiplicar(3, 4))  # Salida: 12
+
+# Aplicación parcial
+triplicar = multiplicar(3)
+print(triplicar(4))  # Salida: 12
+```
+
+En este ejemplo, primero llamamos a `multiplicar` con dos argumentos, `3` y `4`, lo que devuelve `12`. Luego, aplicamos parcialmente la función `multiplicar` con el argumento `3`, lo que nos da una nueva función llamada `triplicar`, que multiplica su argumento por `3`. Finalmente, llamamos a `triplicar` con el argumento `4`, lo que también nos devuelve `12`.
+
+
+### Ejercicio
+
+Explora la biblioteca `toolz` y prueba algunas de sus funciones en tus propios ejemplos. Comienza con `pipe` y `curry` y ve cómo pueden simplificar tu código.
+
+
+
+## ¿Qué son los Módulos Externos?
+
+Ya hemos visto anteriormente los módulos externos y vimos que son pedazos de código escritos por otros desarrolladores que puedes usar en tus propios programas. Piensa en ellos como hechizos predefinidos que puedes invocar para realizar tareas específicas sin tener que escribir todo desde cero. Esto hace que Python sea aún más poderoso y versátil.
+
+Para utilizar un módulo externo, primero debemos importarlo. Python ofrece varias formas de hacerlo, pero aquí tienes un ejemplo sencillo:
+
+```python
+import math
+
+# Ahora, podemos usar funciones matemáticas del módulo math
+raiz_cuadrada = math.sqrt(16)
+```
+
+esto ya lo habiamos hecho y tambien nuestro propio módulo personalizado.
+
+**Algunos Módulos Geniales**
+
+Python tiene una vasta biblioteca de módulos externos para casi cualquier tarea imaginable. Aquí hay algunos ejemplos emocionantes:
+
+- **`random`**: Para generar números aleatorios.
+- **`datetime`**: Para trabajar con fechas y tiempos.
+- **`requests`**: Para hacer solicitudes HTTP y trabajar con API web.
+- **`pandas`**: Para el análisis de datos y manipulación de marcos de datos.
+- **`matplotlib`**: Para crear visualizaciones y gráficos.
+
+entre otros más.
+
+**Instalando Módulos Externos**
+
+A veces, es posible que necesites módulos no incluidos en la biblioteca estándar de Python. En ese caso, puedes instalarlos fácilmente usando una herramienta llamada `pip`. Por ejemplo:
+
+```bash
+pip install nombredelmodulo
+```
+### ¿Qué es pip install?
+
+**pip** es una herramienta que se utiliza para gestionar paquetes y módulos en Python. Un paquete es como un cofre de tesoros lleno de código que otros magos han escrito y compartido. El comando **pip install** es la clave mágica que te permite desbloquear estos tesoros y usarlos en tus propios proyectos.
+
+Veamos cómo utilizar este hechizo en Python. Abre tu terminal o línea de comandos y simplemente ejecuta:
+
+```bash
+pip install nombre_del_paquete
+```
+
+Por ejemplo, si deseas instalar un paquete popular llamado **requests**, que se utiliza para hacer solicitudes HTTP, simplemente escribes:
+
+```bash
+pip install requests
+```
+
+¡Y voilà! Ahora tienes acceso a todas las habilidades mágicas que el paquete *requests* ofrece.
+
+### Administrando Paquetes
+
+Además de instalar paquetes, pip puede ayudarte a listar, desinstalar o actualizar paquetes. Algunos comandos útiles son:
+
+- `pip list`: Muestra todos los paquetes instalados.
+- `pip uninstall nombre_del_paquete`: Elimina un paquete.
+- `pip install --upgrade nombre_del_paquete`: Actualiza un paquete a la última versión.
+
+
+
 
 ¡Saludos, jóvenes programadores de Python! Hoy, nos adentraremos en un emocionante mundo: la Programación Orientada a Objetos (POO) en Python.
 
@@ -2114,422 +2780,11 @@ print(invertido)  # {1: 'a', 2: 'b', 3: 'c'}
 ```
 
 
-## Programación Funcional
-
-La programación funcional es un paradigma en el que la programación se basa casi en su totalidad en funciones, entendiendo el concepto de función según su definición matemática, y no como los simples subprogramas de los lenguajes imperativos. En los lenguajes funcionales puros, un programa consiste exclusivamente en la aplicación de distintas funciones a un valor de entrada para obtener un valor de salida. Python, sin ser un lenguaje puramente funcional, incluye varias características tomadas de los lenguajes funcionales, como las funciones de orden superior y las funciones lambda (funciones anónimas).
-
-### Beneficios de la Programación Funcional
-
-1. **Código más limpio y expresivo:** Las funciones puras, sin efectos secundarios, son más fáciles de razonar y probar.
-2. **Facilidad para la concurrencia:** La ausencia de estado mutable simplifica la ejecución en paralelo.
-3. **Mantenibilidad:** Menos dependencias entre partes del código facilita su comprensión y modificación.
-
-### Funciones Puras
-
-Una función pura es aquella que, dada la misma entrada, siempre produce la misma salida y no tiene efectos secundarios observables. Por ejemplo:
-
-```python
-def suma(a, b):
-    return a + b
-```
-
 
 
 ---
 
-### Funciones de Orden Superior
 
-
-
-El concepto de funciones de orden superior se refiere al uso de funciones como si de un valor cualquiera se tratara, permitiendo pasar funciones como parámetros de otras funciones o devolver funciones como valor de retorno. Esto es posible porque, en Python, todo son objetos, incluidas las funciones.
-
-### Ejemplo en Python
-
-```python
-def saludar(lang):
-    def saludar_es():
-        print("Hola")
-    
-    def saludar_en():
-        print("Hi")
-    
-    def saludar_fr():
-        print("Salut")
-    
-    lang_func = {
-        "es": saludar_es,
-        "en": saludar_en,
-        "fr": saludar_fr
-    }
-    
-    return lang_func[lang]
-
-f = saludar("fr")
-f()
-```
-
-En este ejemplo, llamamos a la función `saludar` con un parámetro `"fr"`. Dentro de `saludar`, se definen varias funciones (`saludar_es`, `saludar_en` y `saludar_fr`) y se crea un diccionario que asigna cadenas de texto a cada una de estas funciones. El valor de retorno de `saludar` es una de estas funciones, determinada por el valor del parámetro `lang`.
-
-### Ejemplo con `map`
-
-La función `map` aplica una función a todos los elementos de una lista o secuencia y devuelve un iterable de tipo `map`.
-
-
-```python
-# Definimos una función para calcular el cuadrado de un número
-def cuadrado(x):
-    return x ** 2
-
-numeros = [1, 2, 3, 4, 5]
-cuadrados = list(map(cuadrado, numeros))
-print(cuadrados)
-```
-
-### Explicación:
-1. Se define la función `cuadrado` que toma un argumento `x` y devuelve su cuadrado.
-2. Se utiliza `map` con la función `cuadrado` y la lista `numeros` para obtener una lista de los cuadrados de los números.
-3. Se convierte el resultado de `map` en una lista y se imprime.
-
-
-
-
-### Ejemplo con `filter`
-
-Tal como su nombre indica filter significa filtrar, y es una de mis funciones
-favoritas, ya que a partir de una lista o iterador y una función condicional, es
-capaz de devolver una nueva colección con los elementos filtrados que cumplan
-la condición. Por ejemplo, supongamos que tenemos una lista de varios números
-y queremos filtrarla, quedándonos únicamente con los múltiplos de 5:
-
-```python
-def multiple(numero):       # Primero declaramos una función condicional
-    if numero % 5 == 0:     # Comprobamos si un número es múltiplo de cinco
-        return True         # Sólo devolvemos True si lo es
-    else:
-        return False        # Devolvemos False si no lo es
-
-numeros = [2, 5, 10, 23, 50, 33]
-
-filter(multiple, numeros)
-
-# Utilizamos list() para convertir el resultado de filter en una lista y poder imprimirlo
-# Casteo de filter a lista
-result = list(filter(multiple, numeros))
-print(result)
-```
-
-Si ejecutamos el filtro obtenemos un objeto de tipo filtro, pero podemos
-transformarlo en una lista fácilmente haciendo un cast (conversión):
-
-```python
-list(filter(multiple, numeros))
-```
-
-
-```code
-[5, 10, 50]
-```
-
-### Ejemplo con `reduce`
-
-Reduce es una función incorporada de Python 2, que toma como argumento un
-conjunto de valores (una lista, una tupla, o cualquier objeto iterable) y lo "reduce"
-a un único valor. Cómo se obtiene ese único valor a partir de la colección pasada
-como argumento dependerá de la función aplicada.
-
-Por ejemplo, el siguiente código reduce la lista [1, 2, 3, 4] al número 10 aplicando
-la función add(a, b), que retorna la suma de sus argumentos.
-
-```python
-from functools import reduce
-
-def add(a, b):
-    return a + b
-
-print(reduce(add, [1, 2, 3, 4]))  # 10
-```
-
-La función pasada como primer argumento debe tener dos parámetros. reduce()
-se encargará de llamarla de forma acumulativa (es decir, preservando el
-resultado de llamadas anteriores) de izquierda a derecha. De modo que el código
-anterior es similar a:
-
-```python
-print(add(add(add(1,2), 3), 4))
-```
-
-### Ejercicio
-
-Crea una lista de números y usa `map` para elevar cada número al cuadrado, `filter` para seleccionar solo los números impares y `reduce` para obtener el producto de todos los números de la lista filtrada.
-
-```python
-from functools import reduce
-
-# Función para calcular el cuadrado de un número
-def calcular_cuadrado(x):
-    return x ** 2
-
-# Función para verificar si un número es impar
-def es_impar(x):
-    return x % 2 != 0
-
-# Función para multiplicar dos números
-def multiplicar(x, y):
-    return x * y
-
-numeros = [1, 2, 3, 4, 5]
-
-# Mapeamos los números a sus cuadrados
-cuadrados = list(map(calcular_cuadrado, numeros))
-
-# Filtramos los números cuadrados para obtener los impares
-impares = list(filter(es_impar, cuadrados))
-
-# Reducimos la lista de números impares para obtener el producto
-producto = reduce(multiplicar, impares)
-
-print(producto)
-```
-
----
-
-### Recursión
-
-
-La recursión es una técnica en la que una función se llama a sí misma. Es una alternativa a la iteración y es común en la programación funcional.
-
-### Ejemplo Clásico: Factorial
-
-```python
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
-print(factorial(5))
-```
-
-### Ejercicio
-
-Intenta escribir una función recursiva para calcular el n-ésimo número de Fibonacci. Recuerda que:
-- Fibonacci(0) = 0
-- Fibonacci(1) = 1
-- Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)
-
-```python
-def fibonacci(n):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
-
-print(fibonacci(6))
-```
-
----
-
-
-
-### Composición de Funciones
-
-La composición de funciones es la aplicación sucesiva de múltiples funciones. En Python, puedes usar la composición para combinar funciones de manera limpia y legible.
-
-### Ejemplo de Composición
-
-
-
-```python
-def doblar(x):
-    return x * 2
-
-def incrementar(x):
-    return x + 1
-
-def componer(f, g):
-    def funcion_compuesta(x):
-        return f(g(x))
-    return funcion_compuesta
-
-f_compuesta = componer(doblar, incrementar)
-print(f_compuesta(3))  # (3 + 1) * 2 = 8
-```
-
-### Explicación:
-1. Se definen las funciones `doblar` y `incrementar` que duplican un número y le suman 1, respectivamente.
-2. Se define la función `componer` que toma dos funciones como argumentos y devuelve una función compuesta.
-3. En la función `componer`, se define una nueva función llamada `funcion_compuesta` que aplica primero la función `g` y luego la función `f`.
-4. La función `componer` devuelve la función `funcion_compuesta`.
-5. Se llama a `componer` con las funciones `doblar` e `incrementar`, creando así la función compuesta `f_compuesta`.
-6. Se imprime el resultado de `f_compuesta(3)`, que debería ser `8` según la descripción del comentario.
-
-
-
----
-
-
-
-### Funciones Lambda
-
-En Python, una función lambda se refiere a una pequeña función anónima. Las llamamos “funciones anónimas” porque técnicamente carecen de nombre. Al contrario que una función normal, no la definimos con la palabra clave estándar `def`. En su lugar, las funciones lambda se definen como una línea que ejecuta una sola expresión.
-
-**Sintaxis básica**
-
-Todas las funciones Lambda en Python tienen exactamente la misma sintaxis:
-
-
-```python
-# Escribo p1 y p2 como parametros 1 y 2 de la funcion
-
-lambda p1, p2: expresion
-```
-
-### Ejemplo de Función Lambda
-
-```python
-# Función normal
-def suma(x, y):
-    return x + y
-
-# Función lambda
-suma_dos = lambda x, y: x + y
-
-# Uso de la función lambda
-resultado = suma_dos(2, 3)
-print(resultado)  # 5
-```
-
-### Ejercicio
-
-Crea una función lambda que eleve al cubo un número y pruébala con diferentes valores.
-
-```python
-cubo = lambda x: x**3
-print(cubo(3))  # 27
-print(cubo(4))  # 64
-```
-
----
-
-
-### Bibliotecas Funcionales
-
-Python tiene varias bibliotecas que facilitan la programación funcional, como `functools`, `itertools` y `toolz`.
-
-### Ejemplo con `toolz`
-
-```python
-from toolz import curry
-
-@curry
-def multiplicar(x, y):
-    return x * y
-
-doblar = multiplicar(2)
-print(doblar(5))  # 10
-```
-
-
-La función `curry` permite crear funciones curried en Python. Una función curried es una función que toma múltiples argumentos y los divide en una serie de funciones que toman uno o más argumentos. Esto puede ser útil cuando se desea aplicar parcialmente una función, es decir, fijar algunos de sus argumentos antes de llamarla.
-
-
-
-1. **Importación de la función `curry` desde la librería `toolz`:**
-   ```python
-   from toolz import curry
-   ```
-   La función `curry` se importa desde la librería `toolz`.
-
-2. **Definición de la función `multiplicar`:**
-   ```python
-   @curry
-   def multiplicar(x, y):
-       return x * y
-   ```
-   Esta función toma dos argumentos `x` e `y`, y devuelve su producto. Al decorarla con `@curry`, la función `multiplicar` se convierte en una función curried.
-
-**Ejemplo de uso:**
-
-Ahora, puedes llamar a la función `multiplicar` con uno o más argumentos, o aplicar parcialmente los argumentos.
-
-```python
-# Llamada normal
-print(multiplicar(3, 4))  # Salida: 12
-
-# Aplicación parcial
-triplicar = multiplicar(3)
-print(triplicar(4))  # Salida: 12
-```
-
-En este ejemplo, primero llamamos a `multiplicar` con dos argumentos, `3` y `4`, lo que devuelve `12`. Luego, aplicamos parcialmente la función `multiplicar` con el argumento `3`, lo que nos da una nueva función llamada `triplicar`, que multiplica su argumento por `3`. Finalmente, llamamos a `triplicar` con el argumento `4`, lo que también nos devuelve `12`.
-
-
-### Ejercicio
-
-Explora la biblioteca `toolz` y prueba algunas de sus funciones en tus propios ejemplos. Comienza con `pipe` y `curry` y ve cómo pueden simplificar tu código.
-
-
-
-## ¿Qué son los Módulos Externos?
-
-Ya hemos visto anteriormente los módulos externos y vimos que son pedazos de código escritos por otros desarrolladores que puedes usar en tus propios programas. Piensa en ellos como hechizos predefinidos que puedes invocar para realizar tareas específicas sin tener que escribir todo desde cero. Esto hace que Python sea aún más poderoso y versátil.
-
-Para utilizar un módulo externo, primero debemos importarlo. Python ofrece varias formas de hacerlo, pero aquí tienes un ejemplo sencillo:
-
-```python
-import math
-
-# Ahora, podemos usar funciones matemáticas del módulo math
-raiz_cuadrada = math.sqrt(16)
-```
-
-esto ya lo habiamos hecho y tambien nuestro propio módulo personalizado.
-
-**Algunos Módulos Geniales**
-
-Python tiene una vasta biblioteca de módulos externos para casi cualquier tarea imaginable. Aquí hay algunos ejemplos emocionantes:
-
-- **`random`**: Para generar números aleatorios.
-- **`datetime`**: Para trabajar con fechas y tiempos.
-- **`requests`**: Para hacer solicitudes HTTP y trabajar con API web.
-- **`pandas`**: Para el análisis de datos y manipulación de marcos de datos.
-- **`matplotlib`**: Para crear visualizaciones y gráficos.
-
-entre otros más.
-
-**Instalando Módulos Externos**
-
-A veces, es posible que necesites módulos no incluidos en la biblioteca estándar de Python. En ese caso, puedes instalarlos fácilmente usando una herramienta llamada `pip`. Por ejemplo:
-
-```bash
-pip install nombredelmodulo
-```
-### ¿Qué es pip install?
-
-**pip** es una herramienta que se utiliza para gestionar paquetes y módulos en Python. Un paquete es como un cofre de tesoros lleno de código que otros magos han escrito y compartido. El comando **pip install** es la clave mágica que te permite desbloquear estos tesoros y usarlos en tus propios proyectos.
-
-Veamos cómo utilizar este hechizo en Python. Abre tu terminal o línea de comandos y simplemente ejecuta:
-
-```bash
-pip install nombre_del_paquete
-```
-
-Por ejemplo, si deseas instalar un paquete popular llamado **requests**, que se utiliza para hacer solicitudes HTTP, simplemente escribes:
-
-```bash
-pip install requests
-```
-
-¡Y voilà! Ahora tienes acceso a todas las habilidades mágicas que el paquete *requests* ofrece.
-
-### Administrando Paquetes
-
-Además de instalar paquetes, pip puede ayudarte a listar, desinstalar o actualizar paquetes. Algunos comandos útiles son:
-
-- `pip list`: Muestra todos los paquetes instalados.
-- `pip uninstall nombre_del_paquete`: Elimina un paquete.
-- `pip install --upgrade nombre_del_paquete`: Actualiza un paquete a la última versión.
 
 ## ¿Qué son los Pandas?<a name="pandas"></a>
 
