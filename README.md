@@ -167,6 +167,8 @@ python mi_primer_programa.py
 
 Ahora tienes Python en tu computadora y estás listo para comenzar tu emocionante viaje en el mundo de la programación. No te preocupes si al principio todo parece un poco confuso, ¡todos empezamos desde algún lugar!
 
+### ***Dale clic a 👉🏻 [Playground](./Practics/01_Hello-world.md) 👈🏻***
+
 # Variables<a name="variables"></a>
 
 Ahora vamos a adentrarnos en el emocionante mundo de Python y explorar un concepto fundamental: las variables. No te preocupes si esto suena un poco técnico, ¡lo explicaremos de manera sencilla y divertida!
