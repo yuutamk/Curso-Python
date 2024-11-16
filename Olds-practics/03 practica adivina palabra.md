@@ -13,7 +13,7 @@ import random
 
 ```python
 def seleccionar_palabra():
-    palabras = ["python", "programacion", "desarrollo", "inteligencia"]
+    palabras = ["python", "programación", "desarrollo", "inteligencia"]
     return random.choice(palabras)
 ```
 
@@ -24,7 +24,7 @@ def jugar():
     palabra_secreta = seleccionar_palabra()
     intentos = 6
     letras_adivinadas = []
-    palabra_mostrada = "_ " * len(palabra_secreta)
+
     print("¡Bienvenido al Juego de Adivinar la Palabra!")
 ```
 
@@ -37,12 +37,10 @@ def jugar():
 ```
 
 - Se configura el número de intentos disponibles (`intentos`) y una lista para almacenar las letras adivinadas (`letras_adivinadas`).
-- Se declara la variable `palabra_mostrada` donde se repetirá el símbolo `_` con un espacio por la cantidad de caracteres que tiene la palabra secreta
 
 ```python
     intentos = 6
     letras_adivinadas = []
-    palabra_mostrada = "_ " * len(palabra_secreta)
 ```
 
 - Se muestra un mensaje de bienvenida al usuario.
@@ -53,13 +51,24 @@ def jugar():
 
 #### Paso 4: Bucle principal del juego:
 
-- Se inicia un bucle `while` que continúa hasta que el jugador agote todos los intentos (`intentos > 0`) o la palabra mostrada se quede sin `_`.
+- Se inicia un bucle `while` que continúa hasta que el jugador gane o agote todos los intentos (`intentos > 0`).
 
 ```python
-    while intentos > 0 and "_" in palabra_mostrada:
+    while intentos > 0:
 ```
 
-- Se muestra la `palabra_mostrada` con las letras encontradas y `_` las letras que aun están ocultas y la cantidad de intentos restantes.
+- Se muestra la palabra oculta con "_" para las letras no adivinadas y las letras adivinadas en su lugar.
+
+```python
+        palabra_mostrada = ""
+        for letra in palabra_secreta:
+            if letra in letras_adivinadas:
+                palabra_mostrada += letra
+            else:
+                palabra_mostrada += "_ "
+```
+
+- Se muestra la cantidad de intentos restantes.
 
 ```python
         print("Palabra:", palabra_mostrada)
@@ -79,52 +88,48 @@ def jugar():
 ```python
         if len(intento) != 1 or not intento.isalpha():
             print("Ingresa una sola letra válida.")
+            continue
 ```
 
 - Se comprueba si la letra ingresada ya ha sido intentada antes.
 
 ```python
-        elif intento in letras_adivinadas:
+        if intento in letras_adivinadas:
             print("Ya has intentado con esa letra.")
+            continue
 ```
 
-#### Paso 6: Actualización de intentos:
+#### Paso 6: Actualización de las letras adivinadas:
+
+- Si la letra es válida y no se ha intentado antes, se agrega a la lista de `letras_adivinadas`.
+
+```python
+        letras_adivinadas.append(intento)
+```
+
+#### Paso 7: Actualización de intentos:
 
 - Si la letra no está en la palabra secreta, se reduce el número de intentos disponibles (`intentos -= 1`).
 
 ```python
-        elif intento not in palabra_secreta:
+        if intento not in palabra_secreta:
             intentos -= 1
-```
-
-#### Paso 7: Actualización de las letras adivinadas:
-
-- Si la letra es válida y no se ha intentado antes, se agrega a la lista de `letras_adivinadas`.
-- Se utiliza append para agregar la letra de `intento` a `letras adivinadas`
-- Se utiliza `.join` para recorre cada uno de los caracteres en la `palabra_secreta` si esta coincide se agregara a la posición en `palabra_mostrada` en caso de que no se encuentre
-en la `palabra_secreta` se remplazara por una `_`.
-
-```python
-        else:
-            letras_adivinadas .append(intento)
-            palabra_mostrada = "".join(letra
-            if letra in letras_adivinadas 
-            else "_" for letra in palabra_secreta)
 ```
 
 #### Paso 8: Comprobación de victoria o derrota:
 
-- Si la palabra oculta es igual a la `palabra_secreta`, el jugador gana y se muestra un mensaje de victoria.
+- Si la palabra oculta (`palabra_mostrada`) coincide con la palabra secreta, el jugador gana y se muestra un mensaje de victoria.
 
 ```python
-        if palabra_mostrada == palabra_mostrada:
-        print("¡Ganaste! La palabra es:", palabra_secreta)
+        if palabra_secreta == palabra_mostrada:
+            print("¡Ganaste! La palabra es:", palabra_secreta)
+            break
 ```
 
 - Si se agotan los intentos, el jugador pierde y se muestra la palabra secreta.
 
 ```python
-    elif intentos == 0:
+    if intentos == 0:
         print("¡Perdiste! La palabra era:", palabra_secreta)
 ```
 

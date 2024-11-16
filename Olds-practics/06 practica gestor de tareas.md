@@ -1,8 +1,6 @@
 ## Gestor de tareas
 #### Paso 1: Creación del archivo "gestor_de_tareas.py".
 
-- Crea un archivo llamado `gestor_de_tareas.py`
-
 #### Paso 2: Definición de funciones para el gestor de tareas:
 
 - Se crea una lista vacía llamada `tareas` para almacenar las tareas pendientes.
@@ -45,11 +43,10 @@ def eliminar_tarea():
 
 #### Paso 2 (continuación): Bucle principal del gestor de tareas:
 
-- se define la variable de control `opcion = ''` para poder controlar el ciclo while
-- Se inicia un bucle `while` que continúa hasta que el usuario elija salir (`opcion 4`).
+- Se inicia un bucle `while` que continúa hasta que el usuario elija salir (`opcion == '4'`).
 
 ```python
-while opcion != '4':
+while True:
 ```
 
 - Se muestra el menú principal del gestor de tareas con opciones para agregar, ver, eliminar tareas y salir.
@@ -87,14 +84,19 @@ while opcion != '4':
         eliminar_tarea()
 ```
 
-- Si el usuario ingresa una opción diferente a 4, se muestra un mensaje de error, no afecta si se escoge una de las opciones validas.
+- Si el usuario elige la opción '4', se rompe el bucle `while` para salir del programa.
 
 ```python
-    elif opcion != '4':
-        print("Opción no válida. Inténtalo de nuevo.")
+    elif opcion == '4':
+        break
 ```
 
-- Si el usuario elige la opción '4', se deja de cumplir la condición del ciclo `while` y termina el programa.
+- Si el usuario ingresa una opción no válida, se muestra un mensaje de error.
+
+```python
+    else:
+        print("Opción no válida. Inténtalo de nuevo.")
+```
 
 #### Paso 3: Ejecuta el archivo y gestiona tus tareas utilizando el gestor de tareas.
 

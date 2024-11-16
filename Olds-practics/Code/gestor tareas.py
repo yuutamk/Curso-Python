@@ -20,9 +20,7 @@ def eliminar_tarea():
     else:
         print("Índice fuera de rango. No se eliminó ninguna tarea.")
 
-opcion = ''
-
-while opcion != '4':
+while True:
     print("\nGestor de Tareas")
     print("1. Agregar Tarea")
     print("2. Ver Tareas")
@@ -37,5 +35,7 @@ while opcion != '4':
         ver_tareas()
     elif opcion == '3':
         eliminar_tarea()
-    elif opcion != '4':
+    elif opcion == '4':
+        break
+    else:
         print("Opción no válida. Inténtalo de nuevo.")

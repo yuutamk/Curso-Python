@@ -40,7 +40,7 @@
          mensaje = "¡Hola, " + nombre + "!"
          return mensaje
 
-     nombre_usuario = input("Escribe tu nombre: ")
+     nombre_usuario = "Alice"
      saludo = saludar(nombre_usuario)
      print(saludo)
      ```
@@ -55,7 +55,7 @@
          cuadrado = numero * numero
          return cuadrado
 
-     numero_ingresado = int(input("Escribe el numero que deseas elevar al cuadrado: "))
+     numero_ingresado = 5
      resultado = calcular_cuadrado(numero_ingresado)
      print("El cuadrado de", numero_ingresado, "es", resultado)
      ```
@@ -77,15 +77,15 @@
    - Paso 2: Escribe un bucle while para adivinar un número secreto:
      ```python
      numero_secreto = 7
-     intento = intentos = 0
+     intentos = 0
 
-     while intento!=numero_secreto:
-       intento = int(input("Adivina el número secreto: "))
-       intentos += 1
-       if intento!=numero_secreto:
-         print("Inténtalo de nuevo.")
+     while True:
+         intento = int(input("Adivina el número secreto: "))
+         intentos += 1
 
-     print("¡Correcto! ¡Lo adivinaste en", intentos, "intentos!")
+         if intento == numero_secreto:
+             print("¡Correcto! ¡Lo adivinaste en", intentos, "intentos!")
+             break
      ```
    - Paso 3: Guarda el archivo y ejecútalo. Deberías poder adivinar el número secreto.
 
@@ -96,11 +96,11 @@
      ```python
      import math
 
-     numero = int(input("Escribe el numero al que deseas sacar la raiz cuadrada: "))
+     numero = 25
      raiz = math.sqrt(numero)
      print("La raíz cuadrada de", numero, "es", raiz)
 
-     angulo = int(input("Escribe el angulo al que deseas calcular el seno: "))
+     angulo = 45
      seno = math.sin(math.radians(angulo))
      print("El seno de", angulo, "grados es", seno)
      ```
