@@ -647,6 +647,8 @@ print("¿Puedo ir al parque?", puedo_ir_al_parque)
 En este tercer ejemplo, hemos utilizado operadores lógicos. Primero, definimos las variables `es_dia_laboral` y `tengo_clases`. Luego, usamos el operador `and` para verificar si ambas condiciones son verdaderas y el operador `not` para negar la segunda condición. Finalmente, imprimimos los valores de las variables y el resultado de la operación lógica.
 
 
+### [Enlace de adicional](https://www.freecodecamp.org/espanol/news/operadores-basicos-en-python-con-ejemplos/)
+
 ### Operaciones de Entrada/Salida en Consola en Python
 
 
