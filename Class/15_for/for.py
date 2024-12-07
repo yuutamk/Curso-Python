@@ -1,3 +1,16 @@
+"""
+El ciclo for como en otros lenguajes se utiliza para que se repita las veces que se estime, ya sea por el usuario, desarrollador o incluso por el mismo programa, pero si sintaxis no es la misma que en otros lenguajes, donde declaramos el ciclo for y la variable del ciclo de la siguiente manera 
+
+> for variable
+
+Para posterior indicarle en qué función o parámetro se va a basar para que repita el ciclo
+
+> for variable in (puede ser una lista, tupla, una función o un rango)
+
+Dependiendo el parámetro que le pasemos este ciclo se repetirá las veces que sean necesarias
+"""
+
+
 '''
 for element in range(1, 21):
   print(element)
